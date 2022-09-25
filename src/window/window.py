@@ -1,5 +1,6 @@
 import tkinter
 import pygame
+import pygame._sdl2
 
 class Window:
     
@@ -30,5 +31,8 @@ class PygameWindow:
         self.screen = pygame.display.set_mode((self.width, self.height), pygame.RESIZABLE);
 
         pygame.display.set_caption(self.title);
+
+        pygame._sdl2.Window.from_display_module().maximize()
+
         
         pygame.display.update();
