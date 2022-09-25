@@ -1,7 +1,8 @@
 import pygame
 import tkinter
 from window import window as w
-
+from chess import globals
+from chess import init
 
 
 def chess():
@@ -12,8 +13,10 @@ def chess():
     
     pygame.display.update();
 
-    running = True
-
+    running = True;
+    
+    init.initBoard();
+    
     while(running):
 
         for event in pygame.event.get():

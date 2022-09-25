@@ -1,15 +1,16 @@
-from window import window as w
+from window import *
 
+screen = None;
 
-class chess:
-    
+board = 64 * [None];
 
-    def __init__(self):
-        self.board: characterArray = [];
+takenBlack = [];
+takenWhite = [];
 
-        self.takenBlack: characterArray = [];
-        self.takenWhite: characterArray = [];
+turn: bool = 0;
 
+# 0 = no check
+# 1 = check on black
+# 2 = check on white
+check: int = 0;                 
 
-
-        
