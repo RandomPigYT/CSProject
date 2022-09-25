@@ -2,15 +2,15 @@
 
 This is the computer science assignment
 
-dependencies:
+**dependencies:**
 
-tkinter:
+**tkinter:**
 
 installation:
 ```
-	pip install tk
+pip install tk
 ```
-pygame:
+**pygame:**
 
 installation:
 ```
@@ -18,27 +18,26 @@ pip install pygame
 ```
 	
 
-Overview of the code:
+**Overview of the code:**
 	
 	
-the Window module:
+**the Window module:**
 	
 import:
 ```
 from window import window
 ```	
 
-
-contains:
+**contains:**
 	
-tkinter window class:
+**tkinter window class:**
 	
 Create a tkinter window
 ```
 <variableName> = window.window(<windowHeight>, <windowWidth>, <title>)
 ```
 
-PygameWindow class:
+**PygameWindow class:**
 	
 Create PygameWindow:
 ```
