@@ -3,7 +3,8 @@ import tkinter
 from window import window as w
 from chess import globals
 from chess import init
-
+from chess import draw
+import os
 
 def chess():
     
@@ -18,10 +19,14 @@ def chess():
     init.initBoard();
     
     while(running):
+        
+        pos = None;
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-        
-        pgWindow.screen.fill((100, 120, 20));
+            
+                            
+        draw.drawBoard(pgWindow);
+
         pygame.display.update();
