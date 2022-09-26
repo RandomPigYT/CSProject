@@ -18,7 +18,6 @@ def chess():
     
     init.initBoard();
 
-    print(pygame.display.get_surface().get_size())
     
     while(running):
         
@@ -28,9 +27,10 @@ def chess():
             if event.type == pygame.QUIT:
                 running = False;
             
-        
-        
 
         draw.drawBoard(pgWindow);
+
+        for i in globals.squareCentres:
+            pygame.draw.circle(pgWindow.screen, ( 193, 46, 30 ), (i[0], i[1]), 50)
 
         pygame.display.update();

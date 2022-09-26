@@ -4,6 +4,8 @@ screen = None;
 
 board = 64 * [None];
 
+squareCentres: list = 64 * [None]
+
 takenBlack = [];
 takenWhite = [];
 
