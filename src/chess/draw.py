@@ -16,17 +16,17 @@ def drawBoard(window: w.PygameWindow):
     white: tuple = (255, 255, 255) 
     black: tuple = (0, 0, 0)
 
-    weight: float = 0.9
     
-    size:float = pygame.display.get_surface().get_size();
+    globals.size = pygame.display.get_surface().get_size();
     
     # Math!
-    offset: float = (size[1] - (weight * size[1])) / 2;
+    offset: float = (globals.size[1] - (globals.weight * globals.size[1])) / 2;
     size: float= pygame.display.get_surface().get_size();
-    boardSize: float= size[1] * weight;
+    boardSize: float = globals.size[1] * globals.weight;
     
     side: int = boardSize / 8;
-    startPos: tuple = ((size[0] - boardSize) / 2, size[1] - offset);
+    globals.side = side;
+    startPos: tuple = ((globals.size[0] - boardSize) / 2, globals.size[1] - offset);
 
     calculateCentres = lambda squarePos, side: (squarePos[0] + (side / 2), squarePos[1] + (side / 2))
 

@@ -6,6 +6,10 @@ board = 64 * [None];
 
 squareCentres: list = 64 * [None]
 
+size: float = None;
+weight: float = 0.9;
+side: float = None;
+
 takenBlack = [];
 takenWhite = [];
 

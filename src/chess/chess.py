@@ -1,9 +1,9 @@
 import pygame
-import tkinter
 from window import window as w
 from chess import globals
 from chess import init
 from chess import draw
+from chess import findSquare as fs
 import os
 
 def chess():
@@ -29,8 +29,14 @@ def chess():
             
 
         draw.drawBoard(pgWindow);
+        
+        currentSqr = fs.findSquare();
 
-        for i in globals.squareCentres:
-            pygame.draw.circle(pgWindow.screen, ( 193, 46, 30 ), (i[0], i[1]), 50)
+        if(currentSqr >= 0):
+            pygame.draw.circle(pgWindow.screen, ( 193, 46, 30 ),
+                           globals.squareCentres[currentSqr], 50)
 
         pygame.display.update();
+
+
+    del pgWindow;

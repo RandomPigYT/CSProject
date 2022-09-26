@@ -27,6 +27,8 @@ class PygameWindow:
         self.height = height;
         self.title = title;
 
+        pygame.init();
+
         self.screen = pygame.display.set_mode((self.width, self.height),
                                               pygame.FULLSCREEN);
 
@@ -35,3 +37,6 @@ class PygameWindow:
 
         
         pygame.display.update();
+
+    def __del__(self):
+        pygame.quit();
