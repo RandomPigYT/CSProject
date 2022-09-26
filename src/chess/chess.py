@@ -5,12 +5,14 @@ from chess import init
 from chess import draw
 from chess import findSquare as fs
 import os
+import screeninfo as si
 
 def chess():
     
     # TODO: create the chess game, lol
 
-    pgWindow = w.PygameWindow(1920, 1080, "Chess");
+    pgWindow = w.PygameWindow(si.get_monitors()[0].width,
+                              si.get_monitors()[0].width, "Chess");
     
     pygame.display.update();
 
