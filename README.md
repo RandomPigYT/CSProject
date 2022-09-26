@@ -17,13 +17,6 @@ installation:
 pip install pygame
 ```
 
-**screeninfo**
-
-installation:
-```
-pip install screeninfo
-```
-
 **Overview of the code:**
 	
 	
