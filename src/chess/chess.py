@@ -18,7 +18,9 @@ def chess():
     
     init.initBoard();
 
-    
+    icon = pygame.image.load(os.getcwd() + "/assets/chessButton.png");
+
+    pygame.display.set_icon(icon);
     while(running):
         
         pos = None;
@@ -34,7 +36,7 @@ def chess():
 
         if(currentSqr >= 0):
             pygame.draw.circle(pgWindow.screen, ( 193, 46, 30 ),
-                           globals.squareCentres[currentSqr], 50)
+                           globals.squareCentres[currentSqr], globals.side / 2)
 
         pygame.display.update();
 

@@ -1,7 +1,7 @@
 import pygame
 from window import window as w
 from chess import globals
-
+from chess import util
     
 
 
@@ -30,7 +30,6 @@ def drawBoard(window: w.PygameWindow):
 
     calculateCentres = lambda squarePos, side: (squarePos[0] + (side / 2), squarePos[1] + (side / 2))
 
-    coordsToIndex = lambda row, column: row * 8 + column
 
     
     row: int= 0;
@@ -46,7 +45,7 @@ def drawBoard(window: w.PygameWindow):
                              (startPos[0] + (column * side), ((offset)) + (row * side), side, side))
             
             # find the centres of the squares
-            globals.squareCentres[coordsToIndex(row, column)] = calculateCentres((startPos[0] + (column * side), offset + (row * side)),side)
+            globals.squareCentres[util.coordsToIndex(row, column)] = calculateCentres((startPos[0] + (column * side), offset + (row * side)),side)
             column += 1;
 
         row += 1;
