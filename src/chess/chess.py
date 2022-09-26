@@ -17,6 +17,8 @@ def chess():
     running = True;
     
     init.initBoard();
+
+    print(pygame.display.get_surface().get_size())
     
     while(running):
         
@@ -24,9 +26,11 @@ def chess():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False
+                running = False;
             
-                            
+        
+        
+
         draw.drawBoard(pgWindow);
 
         pygame.display.update();
