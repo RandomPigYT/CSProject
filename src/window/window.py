@@ -1,5 +1,6 @@
 import tkinter
 import pygame
+import pygame._sdl2 as sdl2
 
 class Window:
     
@@ -33,7 +34,7 @@ class PygameWindow:
 
         pygame.display.set_caption(self.title);
 
-
+        sdl2.Window.from_display_module().maximize();
         
         pygame.display.update();
 

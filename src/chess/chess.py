@@ -15,6 +15,7 @@ def chess():
     pgWindow = w.PygameWindow(pygame.display.Info().current_w,
                               pygame.display.Info().current_h, "Chess");
     
+    
     pygame.display.update();
 
     running = True;
