@@ -10,19 +10,18 @@ def findSquare() -> int:
     
     pos: tuple = pygame.mouse.get_pos();
 
-    distance = lambda p1, p2: math.sqrt(((p2[0] - p1[0]) ** 2) + ((p2[1] - p1[1]) ** 2));
-    
-    minDist = 0;
     for i in range(len(globals.squareCentres)):
         
-        if(distance(pos, globals.squareCentres[minDist]) > distance(pos,globals.squareCentres[i])):
+        bottom = (globals.squareCentres[i][0] - (globals.side / 2), globals.squareCentres[i][1] - (globals.side / 2));
 
-            minDist = i;
-    
-    if(distance(pos, globals.squareCentres[minDist]) > globals.side / 2):
-        return -1;
+        top = (globals.squareCentres[i][0] + (globals.side / 2),
+                  globals.squareCentres[i][1] + (globals.side / 2));
 
-    return minDist;
+        if((pos[0] > bottom[0] and pos[0] < top[0]) and (pos[1] > bottom[1] and
+                                                         pos[1] < top[1])):
+            return i;
+
+    return -1;
 
 
         

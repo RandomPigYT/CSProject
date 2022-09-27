@@ -33,6 +33,9 @@ def chess():
             if event.type == pygame.QUIT:
                 running = False;
             
+            if event.type == pygame.MOUSEBUTTONUP and currentSqr >= 0:
+                print("(", currentSqr % 8, ", ", int(currentSqr / 8), ")",  sep = '');
+            
 
         draw.drawBoard(pgWindow);
         
