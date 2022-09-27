@@ -45,7 +45,7 @@ def drawBoard(window: w.PygameWindow):
                              (startPos[0] + (column * side), ((offset)) + (row * side), side, side))
             
             # find the centres of the squares
-            globals.squareCentres[util.coordsToIndex(row, column)] = calculateCentres((startPos[0] + (column * side), offset + (row * side)),side)
+            globals.squareCentres[util.coordsToIndex(7 - row, column)] = calculateCentres((startPos[0] + (column * side), offset + (row * side)),side)
             column += 1;
 
         row += 1;
