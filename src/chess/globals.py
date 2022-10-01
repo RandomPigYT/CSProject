@@ -1,8 +1,13 @@
 from window import *
+import pygame
+import os
 
 screen = None;
 
 board: list = 64 * [0];
+
+boardImage = pygame.image.load(os.getcwd() + "/assets/chessBoard.png");
+imageCopy = pygame.image.load(os.getcwd() + "/assets/chessBoard.png");
 
 squareCentres: list = 64 * [None]
 
