@@ -20,6 +20,7 @@ isInit = False;
 
 def drawBoard(window: w.PygameWindow):
 
+
     window.screen.fill((49, 46, 43))
     
     white: tuple = (240,218,181) 
@@ -49,25 +50,28 @@ def drawBoard(window: w.PygameWindow):
     colour = lambda x: white if(x % 2) else black;
 
 
-    if(not isInit): 
-        # find the centres of the squares
-        g.boardImage = pygame.transform.scale(g.imageCopy, (boardSize,
+     
+    # find the centres of the squares
+    g.boardImage = pygame.transform.scale(g.imageCopy, (boardSize,
                                                              boardSize));
-        while(row < 8):
+    while(row < 8):
     
-            column: int = 0;
+        column: int = 0;
     
-            while(column < 8):
+        while(column < 8):
             
-                g.squareCentres[util.coordsToIndex(7 - row, column)] = calculateCentres((startPos[0] 
+            g.squareCentres[util.coordsToIndex(7 - row, column)] = calculateCentres((startPos[0] 
                                                                                     + (column * side), 
                                                                                     offset + (row * side)),side)
-                column += 1;
-            row += 1;
+            column += 1;
+        row += 1;
     
     # draw board
     window.screen.blit(g.boardImage, startPos)
     g.prevSize = size;
     drawPieces(window);
+
+
+    isInit = True;
         
     

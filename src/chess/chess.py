@@ -16,7 +16,6 @@ def chess():
     pgWindow = w.PygameWindow(pygame.display.Info().current_w,
                               pygame.display.Info().current_h, "Chess");
     
-    pygame.display.update();
 
     running = True;
     
@@ -30,13 +29,7 @@ def chess():
         
         pos = None;
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False;
-            
-            if event.type == pygame.MOUSEBUTTONUP and currentSqr >= 0:
-                print("(", currentSqr % 8, ", ", int(currentSqr / 8), ")",  sep = '');
-            
+                    
 
         draw.drawBoard(pgWindow);
         
@@ -46,7 +39,14 @@ def chess():
             pygame.draw.circle(pgWindow.screen, ( 193, 46, 30 ),
                            globals.squareCentres[currentSqr], globals.side / 2)
 
-        pygame.display.update();
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False;
+            
+            if event.type == pygame.MOUSEBUTTONUP and currentSqr >= 0:
+                print("(", currentSqr % 8, ", ", int(currentSqr / 8), ")",  sep = '');
 
+        pygame.display.update();
+        
 
     del pgWindow;

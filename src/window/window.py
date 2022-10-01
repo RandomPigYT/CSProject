@@ -30,7 +30,7 @@ class PygameWindow:
 
 
         self.screen = pygame.display.set_mode((self.width, self.height),
-                                              pygame.FULLSCREEN);
+                                              pygame.RESIZABLE);
 
         pygame.display.set_caption(self.title);
 
