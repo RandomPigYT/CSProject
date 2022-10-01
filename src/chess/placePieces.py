@@ -19,7 +19,6 @@ def placePieces(FEN: str):
             column += int(i);
         
         if(i.isalpha()):
-            print(util.coordsToIndex(row, column));
 
             if(i.isupper()):
                 globals.board[util.coordsToIndex(row, column)] = globals.Piece.white | values[i.lower()];

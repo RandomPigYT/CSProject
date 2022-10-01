@@ -15,6 +15,8 @@ size: float = None;
 prevSize = 0;
 weight: float = 0.9;
 side: float = None;
+boardSize = 0;
+
 
 takenBlack: list = [];
 takenWhite: list  = [];

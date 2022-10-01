@@ -9,18 +9,18 @@ import os
 def chess():
     
     # TODO: create the chess game, lol
+
+    pygame.init()
     
-    pygame.init();
 
     pgWindow = w.PygameWindow(pygame.display.Info().current_w,
                               pygame.display.Info().current_h, "Chess");
-    
     
     pygame.display.update();
 
     running = True;
     
-    init.initBoard();
+    init.initBoard(pgWindow);
     print(globals.board);
     
     icon = pygame.image.load(os.getcwd() + "/assets/chessButton.png");
