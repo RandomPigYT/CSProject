@@ -2,16 +2,25 @@ from window import *
 
 screen = None;
 
-board = 64 * [None];
+board: list = 64 * [0];
 
 squareCentres: list = 64 * [None]
 
 size: float = None;
+prevSize = 0;
 weight: float = 0.9;
 side: float = None;
 
-takenBlack = [];
-takenWhite = [];
+takenBlack: list = [];
+takenWhite: list  = [];
+
+
+blackPieceLocations: list = [];
+whitePieceLocations: list = [];
+
+
+attackedSquares: list = [];
+
 
 turn: bool = 0;
 
@@ -36,7 +45,7 @@ class Piece:
     Rook: int = 5;
     Queen: int = 6;
 
-    White: int = 8;
+    white: int = 8;
     black: int = 16;
 
 

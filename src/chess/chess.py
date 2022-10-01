@@ -21,7 +21,8 @@ def chess():
     running = True;
     
     init.initBoard();
-
+    print(globals.board);
+    
     icon = pygame.image.load(os.getcwd() + "/assets/chessButton.png");
 
     pygame.display.set_icon(icon);
