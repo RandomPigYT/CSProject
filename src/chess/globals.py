@@ -18,6 +18,8 @@ side: float = None
 boardSize = 0
 
 
+heldPiece = ();
+
 takenBlack: list = []
 takenWhite: list = []
 

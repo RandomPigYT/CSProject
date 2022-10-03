@@ -44,14 +44,6 @@ def chess():
 
         currentSqr = fs.findSquare()
 
-        if currentSqr >= 0:
-            pygame.draw.circle(
-                pgWindow.screen,
-                (193, 46, 30),
-                globals.squareCentres[currentSqr],
-                globals.side / 2,
-            )
-
         pygame.display.update()
 
     del pgWindow
