@@ -34,10 +34,13 @@ def releasePiece():
         g.heldPiece = ()
 
         if currentSqr != prevPos:
-            if g.board[currentSqr]:
+
+            if g.board[currentSqr] != 0:
                 pygame.mixer.music.load("assets/capture.wav")
+
             else:
                 pygame.mixer.music.load("assets/move.wav")
+
             pygame.mixer.music.set_volume(0.5)
             pygame.mixer.music.play()
 
