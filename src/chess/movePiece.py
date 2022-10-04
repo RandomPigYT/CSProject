@@ -42,6 +42,6 @@ def releasePiece():
                 pygame.mixer.Sound.play(g.captureSound)
 
             else:
-                pygame.mixer.music.play(g.moveSound)
+                pygame.mixer.Sound.play(g.moveSound)
 
         return
