@@ -3,6 +3,8 @@ from chess import findSquare as fs
 import pygame
 
 
+
+
 def holdPiece():
 
     currentSqr = fs.findSquare()
@@ -16,6 +18,9 @@ def holdPiece():
 
 
 def releasePiece():
+    
+    
+    hasLoadedSound = True
 
     currentSqr = fs.findSquare()
 
@@ -30,4 +35,10 @@ def releasePiece():
     else:
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
+        
+        pygame.mixer.init()
+        pygame.mixer.music.load("assets/move.wav");
+        pygame.mixer.music.set_volume(0.2);
+        pygame.mixer.music.play();
+
         return
