@@ -17,18 +17,18 @@ def holdPiece():
 
 def releasePiece():
 
-    prevPos = g.heldPiece[1];
-
     currentSqr = fs.findSquare()
 
     if len(g.heldPiece) == 0:
         return
 
+    prevPos = g.heldPiece[1]
+
     if currentSqr == -1:
         g.board[g.heldPiece[1]] = g.heldPiece[0]
         g.heldPiece = ()
         return
-    
+
     else:
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
