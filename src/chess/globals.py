@@ -4,12 +4,10 @@ import os
 
 screen = None
 
-board: list = 64 * [0]
 
 boardImage = pygame.image.load("assets/chessBoard.png")
 imageCopy = pygame.image.load("assets/chessBoard.png")
 
-squareCentres: list = 64 * [None]
 
 size: float = None
 prevSize = 0
@@ -18,7 +16,11 @@ side: float = None
 boardSize = 0
 
 
-heldPiece = ();
+board: list = 64 * [0]
+squareCentres: list = 64 * [None]
+
+# (<value>, <prevPos>)
+heldPiece = ()
 
 takenBlack: list = []
 takenWhite: list = []
@@ -28,9 +30,11 @@ blackPieceLocations: list = []
 whitePieceLocations: list = []
 
 
-attackedSquares: list = []
+whiteAttackedSquares: list = []
+blackAttackedSquares: list = []
 
-
+# 0 = white
+# 1 = black
 turn: bool = 0
 
 # 0 = no check
@@ -38,11 +42,11 @@ turn: bool = 0
 # 2 = check on white
 check: int = 0
 
-# 0 = both can castle
-# 1 = only white can castle
-# 2 = only black can castle
-# 3 = neither can castle
-canCastle: bool = 0
+# k = black king side
+# q = black queen side
+# K = white king side
+# Q = white queen side
+canCastle: str = 0
 
 
 class Piece:

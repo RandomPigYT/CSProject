@@ -44,6 +44,16 @@ def drawPieces(window: w.PygameWindow):
                 ),
             )
 
+    if len(g.heldPiece) != 0 and g.heldPiece[0] != 0:
+        mousePos = pygame.mouse.get_pos()
+
+        sprite = pygame.transform.scale(
+            sSheet.GetSprite(getPieceName(g.heldPiece[0]), 256, 256), (g.side, g.side)
+        )
+        window.screen.blit(
+            sprite, (mousePos[0] - (g.side / 2), mousePos[1] - (g.side / 2))
+        )
+
 
 isInit = False
 

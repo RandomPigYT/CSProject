@@ -4,6 +4,7 @@ from chess import globals
 from chess import init
 from chess import draw
 from chess import findSquare as fs
+from chess import movePiece as mp
 import os
 
 
@@ -32,12 +33,11 @@ def chess():
             if event.type == pygame.QUIT:
                 running = False
 
-            if event.type == pygame.MOUSEBUTTONUP and currentSqr >= 0:
-                print("(", currentSqr % 8, ", ", int(currentSqr / 8), ")", sep="")
+            if event.type == pygame.MOUSEBUTTONUP:
+                mp.releasePiece()
 
-            if event.type == pygame.KEYDOWN:
-                if event.type == pygame.K_a:
-                    running = False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mp.holdPiece()
 
         draw.drawBoard(pgWindow)
         draw.drawPieces(pgWindow)
