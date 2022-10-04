@@ -32,6 +32,9 @@ def releasePiece():
         g.heldPiece = ()
         return
 
+    if(currentSqr == g.heldPiece[1]):
+        return;
+
     else:
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
