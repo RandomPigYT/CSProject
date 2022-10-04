@@ -17,7 +17,7 @@ def holdPiece():
 
 def releasePiece():
 
-    hasLoadedSound = True
+    prevPos = g.heldPiece[1];
 
     currentSqr = fs.findSquare()
 
@@ -28,12 +28,12 @@ def releasePiece():
         g.board[g.heldPiece[1]] = g.heldPiece[0]
         g.heldPiece = ()
         return
-
+    
     else:
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
 
-        if currentSqr != g.heldPiece[1]:
+        if currentSqr != prevPos:
             pygame.mixer.init()
             pygame.mixer.music.load("assets/move.wav")
             pygame.mixer.music.set_volume(0.5)
