@@ -13,6 +13,7 @@ def chess():
     # TODO: create the chess game, lol
 
     pygame.init()
+    pygame.mixer.init()
 
     pgWindow = w.PygameWindow(
         pygame.display.Info().current_w, pygame.display.Info().current_h, "Chess"

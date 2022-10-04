@@ -92,12 +92,12 @@ def drawBoard(window: w.PygameWindow):
     while row < 8:
 
         column: int = 0
-
         while column < 8:
 
             g.squareCentres[util.coordsToIndex(7 - row, column)] = calculateCentres(
                 (startPos[0] + (column * side), offset + (row * side)), side
             )
+
             column += 1
         row += 1
 

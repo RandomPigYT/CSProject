@@ -2,12 +2,19 @@ from window import *
 import pygame
 import os
 
-screen = None
 
+
+pygame.init()
+
+
+
+screen = None
 
 boardImage = pygame.image.load("assets/chessBoard.png")
 imageCopy = pygame.image.load("assets/chessBoard.png")
 
+moveSound = pygame.mixer.Sound("assets/move.wav")
+captureSound = pygame.mixer.Sound("assets/capture.wav")
 
 size: float = None
 prevSize = 0
