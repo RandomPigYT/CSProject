@@ -15,8 +15,6 @@ def holdPiece():
     g.board[currentSqr] = 0
 
 
-
-
 def releasePiece():
 
     currentSqr = fs.findSquare()
@@ -32,12 +30,15 @@ def releasePiece():
         return
 
     else:
+
+        temp = g.board[currentSqr]
+
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
 
         if currentSqr != prevPos:
 
-            if g.board[currentSqr] != 0:
+            if temp:
                 pygame.mixer.Sound.play(g.captureSound)
 
             else:

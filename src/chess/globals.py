@@ -3,9 +3,7 @@ import pygame
 import os
 
 
-
 pygame.init()
-
 
 
 screen = None
