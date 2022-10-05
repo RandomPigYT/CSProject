@@ -1,5 +1,6 @@
 from chess import globals as g
 from chess import findSquare as fs
+from chess import findLegalMoves as flm
 import pygame
 
 
@@ -24,7 +25,7 @@ def releasePiece():
 
     prevPos = g.heldPiece[1]
 
-    if currentSqr == -1:
+    if currentSqr == -1 and isLegalMove(g.heldPiece[1], currentSqr):
         g.board[g.heldPiece[1]] = g.heldPiece[0]
         g.heldPiece = ()
         return
@@ -44,4 +45,4 @@ def releasePiece():
             else:
                 pygame.mixer.Sound.play(g.moveSound)
 
-        return
+    return
