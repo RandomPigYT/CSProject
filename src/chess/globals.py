@@ -21,7 +21,11 @@ boardSize = 0
 
 
 board: list = 64 * [0]
-squareCentres: list = 64 * [None]
+
+# N, S, E, W, NE, NW, SE, SW
+distToEdge: list = []
+
+squareCentres: list = 64 * [0]
 
 # (<value>, <prevPos>)
 heldPiece = ()
@@ -37,9 +41,6 @@ whitePieceLocations: list = []
 whiteAttackedSquares: list = []
 blackAttackedSquares: list = []
 
-# 0 = white
-# 1 = black
-turn: bool = 0
 
 # 0 = no check
 # 1 = check on black
@@ -65,3 +66,8 @@ class Piece:
 
     white: int = 8
     black: int = 16
+
+
+# 8 = white
+# 16 = black
+turn: bool = Piece.white

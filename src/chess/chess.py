@@ -1,6 +1,6 @@
 import pygame
 from window import window as w
-from chess import globals
+from chess import globals as g
 from chess import init
 from chess import draw
 from chess import findSquare as fs
@@ -42,8 +42,6 @@ def chess():
 
         draw.drawBoard(pgWindow)
         draw.drawPieces(pgWindow)
-
-        currentSqr = fs.findSquare()
 
         pygame.display.update()
 

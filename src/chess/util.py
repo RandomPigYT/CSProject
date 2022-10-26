@@ -1,2 +1,2 @@
-def coordsToIndex(row, column):
-    return row * 8 + column
+def coordsToIndex(rank, file):
+    return rank * 8 + file
