@@ -46,18 +46,18 @@ def pawns() -> list:
     # TODO: check for en passant
 
     # check captures
+    if not inFinalRank(colour, pos):
+        if (
+            g.board[pos + (colourMod(colour) * directions[4])] & 0b11000 != colour
+            and g.board[pos + (colourMod(colour) * directions[4])] != 0
+        ):
+            possibleMoves.append(pos + (colourMod(colour) * directions[4]))
 
-    if (
-        g.board[pos + (colourMod(colour) * directions[4])] & 0b11000 != colour
-        and g.board[pos + (colourMod(colour) * directions[4])] != 0
-    ):
-        possibleMoves.append(pos + (colourMod(colour) * directions[4]))
-
-    if (
-        g.board[pos + (colourMod(colour) * directions[5])] & 0b11000 != colour
-        and g.board[pos + (colourMod(colour) * directions[5])] != 0
-    ):
-        possibleMoves.append(pos + (colourMod(colour) * directions[5]))
+        if (
+            g.board[pos + (colourMod(colour) * directions[5])] & 0b11000 != colour
+            and g.board[pos + (colourMod(colour) * directions[5])] != 0
+        ):
+            possibleMoves.append(pos + (colourMod(colour) * directions[5]))
 
     return possibleMoves
 
