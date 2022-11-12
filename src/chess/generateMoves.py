@@ -5,9 +5,50 @@ from chess import util as u
 directions = [8, -8, 1, -1, 9, 7, -7, -9]
 
 
+def distCmp(currentDist, condition):
+    for i in range(len(condition)):
+        if not currentDist[i] >= condition[i]:
+            return False
+
+    return True
+
+
+def knight() -> list:
+
+    pos = g.heldPiece[1]
+    colour = g.heldPiece[0] & 0b11000
+
+    # Possible offsets (NNE EEN SSE EES NNW WWN SSW WWS)
+    moveLocations = [17, 10, -15, -6, 15, 6, -17, -10]
+    conditions = [
+        (2, 0, 1, 0),
+        (1, 0, 2, 0),
+        (0, 2, 1, 0),
+        (0, 1, 2, 0),
+        (2, 0, 0, 1),
+        (1, 0, 0, 2),
+        (0, 2, 0, 1),
+        (0, 1, 0, 2),
+    ]  # Distance reqired to be able to move (N, S, E, W)
+
+    currentDist = g.distToEdge[pos][0:4]
+
+    # Generate a list of positions satisfying the condition
+    possibleLocations = [
+        x for i, x in enumerate(moveLocations) if distCmp(currentDist, conditions[i])
+    ]
+
+    # The actual moves, possibleLocations is just the offset from current position
+    possibleMoves = []
+
+    for i in possibleLocations:
+        possibleMoves.append(pos + i);
+
+    return possibleMoves
+
+
 def pawns() -> list:
 
-    piece = g.heldPiece[0] & 0b00111
     pos = g.heldPiece[1]
     colour = g.heldPiece[0] & 0b11000
 
@@ -27,6 +68,7 @@ def pawns() -> list:
         else False
     )
 
+    # This is so that the offset is negative for black pieces
     colourMod = lambda colour: 1 if (colour == g.Piece.white) else -1
 
     # check for double pawn push
@@ -107,7 +149,10 @@ def generateMoves() -> list:
     if g.heldPiece[0] & 0b00111 >= g.Piece.Bishop:
         moves = sliding()
 
-    if g.heldPiece[0] & 0b00111 == g.Piece.Pawn:
+    elif g.heldPiece[0] & 0b00111 == g.Piece.Pawn:
         moves = pawns()
+
+    elif g.heldPiece[0] & 0b00111 == g.Piece.Knight:
+        moves = knight()
 
     return moves
