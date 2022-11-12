@@ -1,6 +1,4 @@
-from window import *
 import pygame
-import os
 
 pygame.mixer.init()
 

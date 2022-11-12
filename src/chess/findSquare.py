@@ -1,9 +1,5 @@
 import pygame
-from window import window as w
 from chess import globals
-from chess import init
-from chess import draw
-import math
 
 
 def findSquare() -> int:

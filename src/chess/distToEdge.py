@@ -9,7 +9,6 @@ def distToEdge():
         file = 0
 
         while file < 8:
-            index = util.coordsToIndex(rank, file)
 
             distNorth = 7 - rank
             distSouth = rank

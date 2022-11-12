@@ -16,7 +16,6 @@ def distCmp(currentDist, condition):
 def knight(pieceData: tuple) -> list:
 
     pos = pieceData[1]
-    colour = pieceData[0] & 0b11000
 
     # Possible offsets (NNE EEN SSE EES NNW WWN SSW WWS)
     moveLocations = [17, 10, -15, -6, 15, 6, -17, -10]

@@ -95,7 +95,6 @@ def drawBoard(window: w.PygameWindow):
     g.boardSize = boardSize
     g.side = side
 
-    colour = lambda x: white if (x % 2) else black
 
     # find the centres of the squares
     g.boardImage = pygame.transform.scale(g.imageCopy, (boardSize, boardSize))

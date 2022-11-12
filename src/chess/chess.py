@@ -1,9 +1,7 @@
 import pygame
 from window import window as w
-from chess import globals as g
 from chess import init
 from chess import draw
-from chess import findSquare as fs
 from chess import movePiece as mp
 import os
 

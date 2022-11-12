@@ -1,5 +1,4 @@
 from window import window as w
-from chess import globals as g
 from chess import placePieces as pp
 from chess import distToEdge as de
 import pygame
