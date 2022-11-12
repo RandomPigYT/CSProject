@@ -45,7 +45,6 @@ def chess():
 
         pygame.display.update()
 
-    pygame.quit();
+    pygame.quit()
     del pgWindow
-    return;
-
+    return

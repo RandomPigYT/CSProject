@@ -14,19 +14,22 @@ from tug_of_war import tugOfWar_v2 as tof
 def main():
     # a: Window = w.Window(1080, 1920, "Game launcher");
 
-    inp = input("Select a game\n1. Chess\n2. Tug of War\n\nEnter q to quit\n\nSelection: ")
-    
     while True:
+        inp = input(
+            "Select a game\n1. Chess\n2. Tug of War\n\nEnter q to quit\n\nSelection: "
+        )
+
         if inp == "1":
             ch.chess()
         elif inp == "2":
-            tof.tugOfWar();
+            tof.tugOfWar()
         elif inp == "q" or inp == "Q":
-            break;
-        
+            break
+
         else:
             print("Enter a valid selection")
 
+        os.system("clear")
 
     # a.window.mainloop();
 
