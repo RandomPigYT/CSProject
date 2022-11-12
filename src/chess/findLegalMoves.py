@@ -11,5 +11,5 @@ def isLegalMove(startSquare, endSquare) -> bool:
     if g.board[endSquare] != g.Piece.empty and isSameColour(endSquare):
         return False
 
-    if endSquare in gm.generateMoves():
+    if endSquare in gm.generateMoves(g.heldPiece):
         return True

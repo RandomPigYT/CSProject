@@ -13,10 +13,10 @@ def distCmp(currentDist, condition):
     return True
 
 
-def knight() -> list:
+def knight(pieceData: tuple) -> list:
 
-    pos = g.heldPiece[1]
-    colour = g.heldPiece[0] & 0b11000
+    pos = pieceData[1]
+    colour = pieceData[0] & 0b11000
 
     # Possible offsets (NNE EEN SSE EES NNW WWN SSW WWS)
     moveLocations = [17, 10, -15, -6, 15, 6, -17, -10]
@@ -47,10 +47,10 @@ def knight() -> list:
     return possibleMoves
 
 
-def pawns() -> list:
+def pawns(pieceData: tuple) -> list:
 
-    pos = g.heldPiece[1]
-    colour = g.heldPiece[0] & 0b11000
+    pos = pieceData[1]
+    colour = pieceData[0] & 0b11000
 
     possibleMoves = []
 
@@ -104,11 +104,11 @@ def pawns() -> list:
     return possibleMoves
 
 
-def sliding() -> list:
+def sliding(pieceData: tuple) -> list:
 
-    piece = g.heldPiece[0] & 0b00111
-    pos = g.heldPiece[1]
-    colour = g.heldPiece[0] & 0b11000
+    piece = pieceData[0] & 0b00111
+    pos = pieceData[1]
+    colour = pieceData[0] & 0b11000
 
     offset = ()
 
@@ -142,17 +142,17 @@ def sliding() -> list:
     return possibleMoves
 
 
-def generateMoves() -> list:
+def generateMoves(pieceData: tuple) -> list:
 
     moves = list(range(len(g.board)))
 
-    if g.heldPiece[0] & 0b00111 >= g.Piece.Bishop:
-        moves = sliding()
+    if pieceData[0] & 0b00111 >= g.Piece.Bishop:
+        moves = sliding(pieceData)
 
-    elif g.heldPiece[0] & 0b00111 == g.Piece.Pawn:
-        moves = pawns()
+    elif pieceData[0] & 0b00111 == g.Piece.Pawn:
+        moves = pawns(pieceData)
 
-    elif g.heldPiece[0] & 0b00111 == g.Piece.Knight:
-        moves = knight()
+    elif pieceData[0] & 0b00111 == g.Piece.Knight:
+        moves = knight(pieceData)
 
     return moves
