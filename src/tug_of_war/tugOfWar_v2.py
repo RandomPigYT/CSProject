@@ -28,9 +28,7 @@ def init(w, h, title):
     g.redwin = g.font.render("Red wins!", False, "Red")
     g.bluewin = g.font.render("Blue wins!", False, "Blue")
     g.redkey = g.font2.render("Press z", False, "Red")
-    g.bluekey = g.font2.render(
-        "Press m", False, "Blue"
-    )  # creates text with the font
+    g.bluekey = g.font2.render("Press m", False, "Blue")  # creates text with the font
 
 
 def pull(force):
@@ -51,18 +49,14 @@ def hasWon():
 
     if g.playrect.x <= 40:  # check if red has won
 
-        g.screen.blit(
-            g.playsurf, g.playrect
-        )  # print all assets before showing winner
+        g.screen.blit(g.playsurf, g.playrect)  # print all assets before showing winner
         g.screen.blit(g.redwin, g.textrectr)  # show 'red wins!' on the screen
 
         return False
 
     elif g.playrect.x >= 740:  # check if blue has won
 
-        g.screen.blit(
-            g.playsurf, g.playrect
-        )  # print all assets before showing winner
+        g.screen.blit(g.playsurf, g.playrect)  # print all assets before showing winner
         g.screen.blit(g.bluewin, g.textrectb)  # show 'red wins!' on the screen
 
         return False

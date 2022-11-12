@@ -34,6 +34,7 @@ def knight(pieceData: tuple) -> list:
     currentDist = g.distToEdge[pos][0:4]
 
     # Generate a list of positions satisfying the condition
+    # List comprehension is tight.
     possibleLocations = [
         x for i, x in enumerate(moveLocations) if distCmp(currentDist, conditions[i])
     ]
