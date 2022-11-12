@@ -1,96 +1,69 @@
 import pygame
 from sys import exit
-
-
-class Game:
-    screen = None
-    clock = None
-
-    font = None
-    font2 = None
-
-    floor = None
-    playsurf = None
-
-    redwin = None
-    bluewin = None
-    redkey = None
-    bluekey = None
-
-    sky = None
-    border1 = None
-    border2 = None
-
-    playrect = None
-    bluerect = None
-
-    textrectr = None
-    textrectb = None
-
-    pullForce = 40
+from tug_of_war import globals as g
 
 
 def init(w, h, title):
     pygame.init()  # starts pygame
 
-    Game.screen = pygame.display.set_mode((w, h))  # main window
+    g.screen = pygame.display.set_mode((w, h))  # main window
 
     pygame.display.set_caption(title)  # title
 
-    Game.clock = pygame.time.Clock()  # sets up fps
+    g.clock = pygame.time.Clock()  # sets up fps
 
-    Game.font = pygame.font.Font("assets/Font/Monocraft.otf", 40)
-    Game.font2 = pygame.font.Font(
+    g.font = pygame.font.Font("assets/Font/Monocraft.otf", 40)
+    g.font2 = pygame.font.Font(
         "assets/Font/Monocraft.otf", 26
     )  # set up fonts for further use
 
     ico = pygame.image.load("assets/Images/tug_of_war.png").convert_alpha()
-    Game.floor = pygame.image.load("assets/Images/grass_block_side.png").convert_alpha()
-    Game.playsurf = pygame.image.load(
+    g.floor = pygame.image.load("assets/Images/grass_block_side.png").convert_alpha()
+    g.playsurf = pygame.image.load(
         "assets/Images/tug_of_war.png"
     ).convert_alpha()  # loads images
 
     pygame.display.set_icon(ico)  # uses loaded img as icon
 
-    Game.redwin = Game.font.render("Red wins!", False, "Red")
-    Game.bluewin = Game.font.render("Blue wins!", False, "Blue")
-    Game.redkey = Game.font2.render("Press z", False, "Red")
-    Game.bluekey = Game.font2.render(
+    g.redwin = g.font.render("Red wins!", False, "Red")
+    g.bluewin = g.font.render("Blue wins!", False, "Blue")
+    g.redkey = g.font2.render("Press z", False, "Red")
+    g.bluekey = g.font2.render(
         "Press m", False, "Blue"
     )  # creates text with the font
 
 
 def pull(force):
-    Game.playrect.x += force
+    g.playrect.x += force
 
 
 def draw():
-    Game.screen.blit(Game.sky, (0, 0))
-    Game.screen.blit(Game.border1, (128 + 18, 0))
-    Game.screen.blit(Game.border2, (888 - 22, 0))
-    Game.screen.blit(Game.floor, (0, 384 + 64))
-    Game.screen.blit(Game.playsurf, Game.playrect)
-    Game.screen.blit(Game.redkey, (0, 0))
-    Game.screen.blit(Game.bluekey, Game.bluerect)  # prints all the assets on the screen
+    g.screen.blit(g.sky, (0, 0))
+    g.screen.blit(g.border1, (128 + 18, 0))
+    g.screen.blit(g.border2, (888 - 22, 0))
+    g.screen.blit(g.floor, (0, 384 + 64))
+    g.screen.blit(g.playsurf, g.playrect)
+    g.screen.blit(g.redkey, (0, 0))
+    g.screen.blit(g.bluekey, g.bluerect)  # prints all the assets on the screen
 
 
 def hasWon():
 
-    if Game.playrect.x <= 40:  # check if red has won
+    if g.playrect.x <= 40:  # check if red has won
 
-        Game.screen.blit(
-            Game.playsurf, Game.playrect
+        g.screen.blit(
+            g.playsurf, g.playrect
         )  # print all assets before showing winner
-        Game.screen.blit(Game.redwin, Game.textrectr)  # show 'red wins!' on the screen
+        g.screen.blit(g.redwin, g.textrectr)  # show 'red wins!' on the screen
 
         return False
 
-    elif Game.playrect.x >= 740:  # check if blue has won
+    elif g.playrect.x >= 740:  # check if blue has won
 
-        Game.screen.blit(
-            Game.playsurf, Game.playrect
+        g.screen.blit(
+            g.playsurf, g.playrect
         )  # print all assets before showing winner
-        Game.screen.blit(Game.bluewin, Game.textrectb)  # show 'red wins!' on the screen
+        g.screen.blit(g.bluewin, g.textrectb)  # show 'red wins!' on the screen
 
         return False
 
@@ -106,31 +79,31 @@ def input(event):
     if event.type == pygame.KEYDOWN:  # checks if button is pressed
 
         if event.key == pygame.K_z:  # checks if button was z
-            pull(-Game.pullForce)
+            pull(-g.pullForce)
 
         elif event.key == pygame.K_m:  # checks if button was m
-            pull(Game.pullForce)
+            pull(g.pullForce)
 
 
 def tugOfWar():
 
     init(1024, 512, "Tug of war")
 
-    Game.sky = pygame.Surface((1024, 512))
-    Game.sky.fill("Skyblue")  # sky
+    g.sky = pygame.Surface((1024, 512))
+    g.sky.fill("Skyblue")  # sky
 
-    Game.border1 = pygame.Surface((5, 2000))
-    Game.border1.fill("Red")  # border for blue
+    g.border1 = pygame.Surface((5, 2000))
+    g.border1.fill("Red")  # border for blue
 
-    Game.border2 = pygame.Surface((5, 2000))
-    Game.border2.fill("Blue")  # border for blue
+    g.border2 = pygame.Surface((5, 2000))
+    g.border2.fill("Blue")  # border for blue
 
-    Game.playrect = Game.playsurf.get_rect(
+    g.playrect = g.playsurf.get_rect(
         midbottom=(512, 476)
     )  # creates rectangles (hitboxes) for the player image for easy navigation
-    Game.textrectr = Game.redwin.get_rect(midbottom=(512, 200))
-    Game.textrectb = Game.bluewin.get_rect(midbottom=(512, 200))
-    Game.bluerect = Game.bluekey.get_rect(
+    g.textrectr = g.redwin.get_rect(midbottom=(512, 200))
+    g.textrectb = g.bluewin.get_rect(midbottom=(512, 200))
+    g.bluerect = g.bluekey.get_rect(
         topright=(1024, 0)
     )  # creates rectangles (hitboxes) for the font for easy navigation
 
@@ -145,7 +118,7 @@ def tugOfWar():
         loop = hasWon()
 
         pygame.display.update()
-        Game.clock.tick(60)
+        g.clock.tick(60)
 
     while True:
 
