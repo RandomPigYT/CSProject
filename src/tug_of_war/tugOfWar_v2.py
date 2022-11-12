@@ -52,16 +52,16 @@ def hasWon():
         g.screen.blit(g.playsurf, g.playrect)  # print all assets before showing winner
         g.screen.blit(g.redwin, g.textrectr)  # show 'red wins!' on the screen
 
-        return False
+        return True
 
     elif g.playrect.x >= 740:  # check if blue has won
 
         g.screen.blit(g.playsurf, g.playrect)  # print all assets before showing winner
         g.screen.blit(g.bluewin, g.textrectb)  # show 'red wins!' on the screen
 
-        return False
+        return True
 
-    return True
+    return False
 
 
 def input(event):
@@ -109,7 +109,7 @@ def tugOfWar():
             input(event)
 
         draw()
-        loop = hasWon()
+        loop = not hasWon()
 
         pygame.display.update()
         g.clock.tick(60)
