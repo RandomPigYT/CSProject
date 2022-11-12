@@ -42,7 +42,7 @@ def knight() -> list:
     possibleMoves = []
 
     for i in possibleLocations:
-        possibleMoves.append(pos + i);
+        possibleMoves.append(pos + i)
 
     return possibleMoves
 

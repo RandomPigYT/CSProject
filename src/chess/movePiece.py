@@ -23,18 +23,27 @@ def releasePiece():
 
     prevPos = g.heldPiece[1]
 
-    if currentSqr == -1 or not flm.isLegalMove(g.heldPiece[1], currentSqr):
+    # Check if move is illegal or it is not the right player's turn
+    if (
+        currentSqr == -1
+        or not flm.isLegalMove(g.heldPiece[1], currentSqr)
+        or (g.heldPiece[0] & 0b11000) != g.turn
+    ):
 
         g.board[g.heldPiece[1]] = g.heldPiece[0]
         g.heldPiece = ()
         return
 
     else:
-
+        # This is to prevent sound from playing if end position is the same as
+        # start position
         temp = g.board[currentSqr]
 
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
+
+        # Switch turns
+        g.turn ^= 0b11000
 
         if currentSqr != prevPos:
 
