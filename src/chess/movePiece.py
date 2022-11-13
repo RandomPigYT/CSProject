@@ -42,10 +42,11 @@ def releasePiece():
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
 
-        # Switch turns
-        g.turn ^= 0b11000
 
         if currentSqr != prevPos:
+
+            # Switch turns
+            g.turn ^= 0b11000
 
             if temp:
                 pygame.mixer.Sound.play(g.captureSound)
