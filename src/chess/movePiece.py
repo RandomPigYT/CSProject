@@ -42,7 +42,6 @@ def releasePiece():
         g.board[currentSqr] = g.heldPiece[0]
         g.heldPiece = ()
 
-
         if currentSqr != prevPos:
 
             # Switch turns

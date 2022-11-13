@@ -39,23 +39,22 @@ def init(w, h, title):
 
     Game.clock = pygame.time.Clock()  # sets up fps
 
+    # set up fonts for further use
     Game.font = pygame.font.Font("assets/Font/Monocraft.otf", 40)
-    Game.font2 = pygame.font.Font(
-        "assets/Font/Monocraft.otf", 26
-    )  # set up fonts for further use
+    Game.font2 = pygame.font.Font("assets/Font/Monocraft.otf", 26)
 
+    # loads images
     ico = pygame.image.load("assets/Images/tug_of_war.png").convert_alpha()
     Game.floor = pygame.image.load("assets/Images/grass_block_side.png").convert_alpha()
-    Game.playsurf = pygame.image.load(
-        "assets/Images/tug_of_war.png"
-    ).convert_alpha()  # loads images
+    Game.playsurf = pygame.image.load("assets/Images/tug_of_war.png").convert_alpha()
 
     pygame.display.set_icon(ico)  # uses loaded img as icon
 
+    # creates text with the font
     Game.redwin = Game.font.render("Red wins!", False, "Red")
     Game.bluewin = Game.font.render("Blue wins!", False, "Blue")
     Game.redkey = Game.font2.render("Press z", False, "Red")
-    Game.bluekey = Game.font2.render("Press m", False, "Blue")  # creates text with the font
+    Game.bluekey = Game.font2.render("Press m", False, "Blue")
 
 
 def pull(force):
@@ -63,27 +62,31 @@ def pull(force):
 
 
 def draw():
+
+    # draws all the objects to the screen
     Game.screen.blit(Game.sky, (0, 0))
     Game.screen.blit(Game.border1, (128 + 18, 0))
     Game.screen.blit(Game.border2, (888 - 22, 0))
     Game.screen.blit(Game.floor, (0, 384 + 64))
     Game.screen.blit(Game.playsurf, Game.playrect)
     Game.screen.blit(Game.redkey, (0, 0))
-    Game.screen.blit(Game.bluekey, Game.bluerect)  # prints all the assets on the screen
+    Game.screen.blit(Game.bluekey, Game.bluerect)
 
 
 def hasWon():
 
     if Game.playrect.x <= 40:  # check if red has won
 
-        Game.screen.blit(Game.playsurf, Game.playrect)  # print all assets before showing winner
+        # print all assets before showing winner
+        Game.screen.blit(Game.playsurf, Game.playrect)
         Game.screen.blit(Game.redwin, Game.textrectr)  # show 'red wins!' on the screen
 
         return True
 
     elif Game.playrect.x >= 740:  # check if blue has won
 
-        Game.screen.blit(Game.playsurf, Game.playrect)  # print all assets before showing winner
+        # print all assets before showing winner
+        Game.screen.blit(Game.playsurf, Game.playrect)
         Game.screen.blit(Game.bluewin, Game.textrectb)  # show 'red wins!' on the screen
 
         return True
@@ -119,14 +122,13 @@ def tugOfWar():
     Game.border2 = pygame.Surface((5, 2000))
     Game.border2.fill("Blue")  # border for blue
 
-    Game.playrect = Game.playsurf.get_rect(
-        midbottom=(512, 476)
-    )  # creates rectangles (hitboxes) for the player image for easy navigation
+    # creates rectangles (hitboxes) for the player image for easy navigation
+    Game.playrect = Game.playsurf.get_rect(midbottom=(512, 476))
+
+    # creates rectangles (hitboxes) for the font for easy navigation
     Game.textrectr = Game.redwin.get_rect(midbottom=(512, 200))
     Game.textrectb = Game.bluewin.get_rect(midbottom=(512, 200))
-    Game.bluerect = Game.bluekey.get_rect(
-        topright=(1024, 0)
-    )  # creates rectangles (hitboxes) for the font for easy navigation
+    Game.bluerect = Game.bluekey.get_rect(topright=(1024, 0))
 
     loop = True
 
