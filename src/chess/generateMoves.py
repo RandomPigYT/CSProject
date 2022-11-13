@@ -75,6 +75,7 @@ def pawns(pieceData: tuple) -> list:
     if (
         inInitialRank(colour, pos)
         and g.board[pos + (colourMod(colour) * (2 * directions[0]))] == 0
+        and g.board[pos + (colourMod(colour) * (1 * directions[0]))] == 0
     ):
         possibleMoves.append(pos + (colourMod(colour) * (2 * directions[0])))
 
