@@ -2,14 +2,33 @@ from chess import globals as g
 from chess import generateMoves as gm
 
 
-def isLegalMove(startSquare, endSquare) -> bool:
+def makeMove(startSquare, endSquare) -> bool:
+    def isSameColour(b):  # {
+        if g.heldPiece[0] & 0b11000 == g.board[b] & 0b11000:
+            return True
 
-    isSameColour = (
-        lambda b: True if g.heldPiece[0] & 0b11000 == g.board[b] & 0b11000 else False
-    )
-
-    if g.board[endSquare] != g.Piece.empty and isSameColour(endSquare):
         return False
 
-    if endSquare in gm.generateMoves(g.heldPiece):
+    # }
+
+    moves = gm.generateMoves(g.heldPiece)
+
+    if (
+        g.board[endSquare] != g.Piece.empty
+        and isSameColour(endSquare)
+        or endSquare == -1
+        or (g.heldPiece[0] & 0b11000) != g.turn
+        or endSquare not in moves
+    ):
+
+        g.board[g.heldPiece[1]] = g.heldPiece[0]
+        g.heldPiece = ()
+
+        return False
+
+    else:
+
+        g.board[endSquare] = g.heldPiece[0]
+        g.heldPiece = ()
+
         return True

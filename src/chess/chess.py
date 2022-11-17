@@ -8,8 +8,6 @@ import os
 
 def chess():
 
-    # TODO: create the chess game, lol
-
     pygame.init()
     pygame.mixer.init()
 
