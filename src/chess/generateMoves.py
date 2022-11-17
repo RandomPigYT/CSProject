@@ -5,14 +5,6 @@ from chess import util as u
 directions = [8, -8, 1, -1, 9, 7, -7, -9]
 
 
-def distCmp(currentDist, condition):
-    for i in range(len(condition)):
-        if not currentDist[i] >= condition[i]:
-            return False
-
-    return True
-
-
 def knight(pieceData: tuple) -> list:
 
     pos = pieceData[1]
@@ -31,6 +23,15 @@ def knight(pieceData: tuple) -> list:
     ]  # Distance reqired to be able to move (N, S, E, W)
 
     currentDist = g.distToEdge[pos][0:4]
+
+    def distCmp(currentDist, condition):  # {
+        for i in range(len(condition)):
+            if not currentDist[i] >= condition[i]:
+                return False
+
+        return True
+
+    # }
 
     # Generate a list of positions satisfying the condition
     # List comprehension is tight.
@@ -90,16 +91,10 @@ def pawns(pieceData: tuple) -> list:
 
     # check captures
     if not inFinalRank(colour, pos):
-        if (
-            g.board[pos + (colourMod(colour) * directions[4])] & 0b11000 != colour
-            and g.board[pos + (colourMod(colour) * directions[4])] != 0
-        ):
+        if g.board[pos + (colourMod(colour) * directions[4])] != 0:
             possibleMoves.append(pos + (colourMod(colour) * directions[4]))
 
-        if (
-            g.board[pos + (colourMod(colour) * directions[5])] & 0b11000 != colour
-            and g.board[pos + (colourMod(colour) * directions[5])] != 0
-        ):
+        if g.board[pos + (colourMod(colour) * directions[5])] != 0:
             possibleMoves.append(pos + (colourMod(colour) * directions[5]))
 
     return possibleMoves

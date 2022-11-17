@@ -28,8 +28,8 @@ def main():
 
         else:
             print("Enter a valid selection")
-        print()
 
+        print()
     # a.window.mainloop();
 
 

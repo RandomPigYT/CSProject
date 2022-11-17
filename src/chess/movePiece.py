@@ -34,6 +34,8 @@ def releasePiece():
             # Switch turns
             g.turn ^= 0b11000
 
+            # Don't play sound if starting square is the same as the ending
+            # square
             if temp:
                 pygame.mixer.Sound.play(g.captureSound)
             else:
