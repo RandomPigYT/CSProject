@@ -62,17 +62,17 @@ def getSquareCentres(startPos, offset):
         squarePos[1] + (side / 2),
     )
 
-    row: int = 0
-    while row < 8:
-        column: int = 0
-        while column < 8:
+    rank: int = 0
+    while rank < 8:
+        file: int = 0
+        while file < 8:
 
-            g.squareCentres[util.coordsToIndex(7 - row, column)] = calculateCentres(
-                (startPos[0] + (column * g.side), offset + (row * g.side)), g.side
+            g.squareCentres[util.coordsToIndex(7 - rank, file)] = calculateCentres(
+                (startPos[0] + (file * g.side), offset + (rank * g.side)), g.side
             )
 
-            column += 1
-        row += 1
+            file += 1
+        rank += 1
 
 
 def drawBoard(window: w.PygameWindow):
