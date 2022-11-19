@@ -1,6 +1,6 @@
 from chess import globals as g
 from chess import findSquare as fs
-from chess import findLegalMoves as flm
+from chess import makeMove as mm
 import pygame
 
 
@@ -27,7 +27,7 @@ def releasePiece():
     # start position
     temp = g.board[currentSqr]
 
-    if flm.makeMove(g.heldPiece[1], currentSqr):
+    if mm.makeMove(g.heldPiece[1], currentSqr):
 
         if currentSqr != prevPos:
 
