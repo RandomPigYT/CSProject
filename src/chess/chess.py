@@ -5,6 +5,7 @@ from chess import draw
 from chess import movePiece as mp
 from chess import attackedSquares as a
 from chess import globals as g
+from sprites import sprites as s
 import os
 
 
@@ -22,6 +23,8 @@ def chess():
     init.initBoard(pgWindow)
 
     icon = pygame.image.load(os.getcwd() + "/assets/chessButton.png")
+
+    g.sSheet = s.SpriteSheet("assets/piece_sprites.png")
 
     pygame.display.set_icon(icon)
     while running:
@@ -52,5 +55,6 @@ def chess():
         pygame.display.update()
 
     pygame.quit()
+    del g.sSheet
     del pgWindow
     return

@@ -27,13 +27,13 @@ def getPieceName(pieceVal):
 
 def drawPieces(window: w.PygameWindow):
 
-    sSheet = s.SpriteSheet("assets/piece_sprites.png")
+    #sSheet = s.SpriteSheet("assets/piece_sprites.png")
     sprite = None
 
     for i in range(len(g.board)):
         if g.board[i] != 0:
             sprite = pygame.transform.scale(
-                sSheet.GetSprite(getPieceName(g.board[i]), 256, 256), (g.side, g.side)
+                g.sSheet.GetSprite(getPieceName(g.board[i]), 256, 256), (g.side, g.side)
             )
 
             window.screen.blit(
@@ -48,7 +48,7 @@ def drawPieces(window: w.PygameWindow):
         mousePos = pygame.mouse.get_pos()
 
         sprite = pygame.transform.scale(
-            sSheet.GetSprite(getPieceName(g.heldPiece[0]), 256, 256), (g.side, g.side)
+            g.sSheet.GetSprite(getPieceName(g.heldPiece[0]), 256, 256), (g.side, g.side)
         )
         window.screen.blit(
             sprite, (mousePos[0] - (g.side / 2), mousePos[1] - (g.side / 2))

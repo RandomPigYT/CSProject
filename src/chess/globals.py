@@ -8,6 +8,8 @@ screen = None
 boardImage = pygame.image.load("assets/chessBoard.png")
 imageCopy = pygame.image.load("assets/chessBoard.png")
 
+sSheet = None;
+
 moveSound = pygame.mixer.Sound("assets/move.wav")
 captureSound = pygame.mixer.Sound("assets/capture.wav")
 
@@ -40,7 +42,7 @@ attacked = []
 
 # 0 = no check
 # 1 = check on black
-# 2 = check on white
+# 2 = n white
 check: int = 0
 
 # k = black king side

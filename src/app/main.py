@@ -9,6 +9,7 @@ sys.path.append(parentdir)
 from window import window as w
 from chess import chess as ch
 from tug_of_war import tugOfWar_v2 as tof
+from tetris import tetris as t
 
 
 def main():
@@ -16,13 +17,17 @@ def main():
 
     while True:
         inp = input(
-            "Select a game\n1. Chess\n2. Tug of War\n\nEnter q to quit\n\nSelection: "
+            "Select a game\n1. Chess\n2. Tug of War\n3. Tetris\nEnter q to quit\n\nSelection: "
         )
 
         if inp == "1":
             ch.chess()
         elif inp == "2":
             tof.tugOfWar()
+        
+        elif inp == "3":
+            t.tetris()
+
         elif inp == "q" or inp == "Q":
             break
 

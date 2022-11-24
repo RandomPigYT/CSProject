@@ -14,11 +14,13 @@ def attackedSquares(colour) -> list:
 
 
     for i in pieces:
-        if g.board[i] == g.Piece.Pawn:
-            g.attacked.extend(gm.pawnAttacks(g.board[i], i))
+        if g.board[i] & 0b00111 == g.Piece.Pawn:
+            g.attacked.extend(gm.pawnAttacks((g.board[i], i)))
             continue
 
 
-        elif g.board[i] != g.Piece.King:
+        elif g.board[i] & 0b00111 != g.Piece.King:
+            print(g.board[i] & 0b00111)
+
             g.attacked.extend(gm.generateMoves((g.board[i], i)))
 
