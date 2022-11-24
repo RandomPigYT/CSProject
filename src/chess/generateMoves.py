@@ -5,6 +5,8 @@ from chess import util as u
 directions = [8, -8, 1, -1, 9, 7, -7, -9]
 
 
+
+
 def knight(pieceData: tuple) -> list:
 
     pos = pieceData[1]
@@ -47,6 +49,30 @@ def knight(pieceData: tuple) -> list:
 
     return possibleMoves
 
+
+def pawnAttacks(pieceData: tuple) -> list:
+    
+    pos = pieceData[1]
+    colour = pieceData[0] & 0b11000
+
+    possibleMoves = []
+    
+    # This is so that the offset is negative for black pieces
+    colourMod = lambda colour: 1 if (colour == g.Piece.white) else -1
+
+    inFinalRank = (
+        lambda colour, pos: True
+        if (colour == g.Piece.white and u.indexToCoords(pos)[1] == 7)
+        or (colour == g.Piece.black and u.indexToCoords(pos)[1] == 0)
+        else False
+    )
+    
+    # Attacked squares
+    if not inFinalRank(colour, pos):
+        possibleMoves.append(pos + (colourMod(colour) * directions[4]))
+        possibleMoves.append(pos + (colourMod(colour) * directions[5]))
+
+    return possibleMoves;
 
 def pawns(pieceData: tuple) -> list:
 
@@ -109,7 +135,10 @@ def sliding(pieceData: tuple) -> list:
     offset = ()
 
     possibleMoves = []
-
+    
+    # This decides which directions the piece can move in
+    # offset[0] is the first direction
+    # offset[1] is the number of directions
     if piece == g.Piece.Rook:
         offset = (0, 4)
     elif piece == g.Piece.Bishop:
@@ -122,11 +151,13 @@ def sliding(pieceData: tuple) -> list:
         temp = pos
 
         for j in range(g.distToEdge[pos][i + offset[0]]):
-            temp += directions[i + offset[0]]
-
+            temp += directions[i + offset[0]] 
+            
+            # Check if the current square is empty
             if g.board[temp] == 0:
                 possibleMoves.append(temp)
-
+            
+            # Check if the current sqaure contains a piece of the same colour
             elif g.board[temp] & 0b11000 != colour:
                 possibleMoves.append(temp)
                 break

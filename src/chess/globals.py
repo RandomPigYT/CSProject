@@ -36,9 +36,7 @@ blackPieceLocations: list = []
 whitePieceLocations: list = []
 
 
-whiteAttackedSquares: list = []
-blackAttackedSquares: list = []
-
+attacked = []
 
 # 0 = no check
 # 1 = check on black

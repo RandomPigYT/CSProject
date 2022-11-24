@@ -1,6 +1,7 @@
 from chess import globals as g
 from chess import generateMoves as gm
 from chess import pieceLocations as pl
+from chess import attackedSquares as a
 
 
 def makeMove(startSquare, endSquare) -> bool:
@@ -35,4 +36,6 @@ def makeMove(startSquare, endSquare) -> bool:
         # Keep track of pieces
         pl.pieceLocations();
 
+        
+    
         return True

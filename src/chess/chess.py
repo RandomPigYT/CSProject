@@ -3,6 +3,8 @@ from window import window as w
 from chess import init
 from chess import draw
 from chess import movePiece as mp
+from chess import attackedSquares as a
+from chess import globals as g
 import os
 
 
@@ -32,11 +34,19 @@ def chess():
 
             if event.type == pygame.MOUSEBUTTONUP:
                 mp.releasePiece()
+                a.attackedSquares(g.Piece.black)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mp.holdPiece()
-
+                
+                
         draw.drawBoard(pgWindow)
+
+
+        for i in g.attacked:
+            pygame.draw.circle(pgWindow.screen, (255,0,0), g.squareCentres[i],g.side / 2)
+
+
         draw.drawPieces(pgWindow)
 
         pygame.display.update()
