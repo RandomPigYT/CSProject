@@ -27,7 +27,7 @@ def getPieceName(pieceVal):
 
 def drawPieces(window: w.PygameWindow):
 
-    #sSheet = s.SpriteSheet("assets/piece_sprites.png")
+    # sSheet = s.SpriteSheet("assets/piece_sprites.png")
     sprite = None
 
     for i in range(len(g.board)):

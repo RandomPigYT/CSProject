@@ -2,7 +2,7 @@ from chess import globals as g
 
 
 def pieceLocations():
-    
+
     g.whitePieceLocations = []
     g.blackPieceLocations = []
 

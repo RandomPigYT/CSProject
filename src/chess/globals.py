@@ -8,7 +8,7 @@ screen = None
 boardImage = pygame.image.load("assets/chessBoard.png")
 imageCopy = pygame.image.load("assets/chessBoard.png")
 
-sSheet = None;
+sSheet = None
 
 moveSound = pygame.mixer.Sound("assets/move.wav")
 captureSound = pygame.mixer.Sound("assets/capture.wav")

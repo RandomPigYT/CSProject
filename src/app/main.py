@@ -24,7 +24,7 @@ def main():
             ch.chess()
         elif inp == "2":
             tof.tugOfWar()
-        
+
         elif inp == "3":
             t.tetris()
 

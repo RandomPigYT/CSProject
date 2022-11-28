@@ -32,10 +32,8 @@ def makeMove(startSquare, endSquare) -> bool:
 
         g.board[endSquare] = g.heldPiece[0]
         g.heldPiece = ()
-        
-        # Keep track of pieces
-        pl.pieceLocations();
 
-        
-    
+        # Keep track of pieces
+        pl.pieceLocations()
+
         return True

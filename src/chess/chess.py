@@ -41,15 +41,8 @@ def chess():
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mp.holdPiece()
-                
-                
+
         draw.drawBoard(pgWindow)
-
-
-        for i in g.attacked:
-            pygame.draw.circle(pgWindow.screen, (255,0,0), g.squareCentres[i],g.side / 2)
-
-
         draw.drawPieces(pgWindow)
 
         pygame.display.update()

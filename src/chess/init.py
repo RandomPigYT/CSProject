@@ -15,9 +15,8 @@ def initBoard(window: w.PygameWindow):
     g.whitePieceLocations = []
     g.attacked = []
     g.check = 0
-    g.check = ''
+    g.check = ""
     g.turn = g.Piece.white
-    
 
     pygame.mixer.init()
 

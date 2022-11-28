@@ -1,5 +1,4 @@
 import pygame
-from sys import exit
 
 
 class Game:
@@ -96,10 +95,6 @@ def hasWon():
 
 def input(event):
 
-    if event.type == pygame.QUIT:
-        pygame.quit()
-        exit()
-
     if event.type == pygame.KEYDOWN:  # checks if button is pressed
 
         if event.key == pygame.K_z:  # checks if button was z
@@ -136,6 +131,9 @@ def tugOfWar():
         for event in pygame.event.get():
 
             input(event)
+
+            if event.type == pygame.QUIT:
+                pygame.quit()
 
         draw()
         loop = not hasWon()
