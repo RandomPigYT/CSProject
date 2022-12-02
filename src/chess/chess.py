@@ -26,6 +26,8 @@ def chess():
 
     g.sSheet = s.SpriteSheet("assets/piece_sprites.png")
 
+    a.getCriticalLine(16, 16)
+
     pygame.display.set_icon(icon)
     while running:
 
@@ -44,10 +46,10 @@ def chess():
 
         draw.drawBoard(pgWindow)
 
-        for i in g.attacked:
-            pygame.draw.circle(
-                pgWindow.screen, (255, 0, 0), g.squareCentres[i], g.side / 2
-            )
+        # for i in g.attacked:
+        #  pygame.draw.circle(
+        #      pgWindow.screen, (255, 0, 0), g.squareCentres[i], g.side / 2
+        #  )
 
         draw.drawPieces(pgWindow)
 
