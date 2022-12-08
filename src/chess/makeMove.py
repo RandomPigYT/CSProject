@@ -6,7 +6,7 @@ from chess import attackedSquares as a
 
 def makeMove(startSquare, endSquare) -> bool:
     def isSameColour(b):  # {
-        if g.heldPiece[0] & 0b11000 == g.board[b] & 0b11000:
+        if g.heldPiece[0] & g.colourMask == g.board[b] & g.colourMask:
             return True
 
         return False
@@ -19,7 +19,7 @@ def makeMove(startSquare, endSquare) -> bool:
         g.board[endSquare] != g.Piece.empty
         and isSameColour(endSquare)
         or endSquare == -1
-        or (g.heldPiece[0] & 0b11000) != g.turn
+        or (g.heldPiece[0] & g.colourMask) != g.turn
         or endSquare not in moves
     ):
 
