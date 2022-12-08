@@ -37,6 +37,9 @@ takenWhite: list = []
 blackPieceLocations: list = []
 whitePieceLocations: list = []
 
+# 0: while
+# 1: black
+kingPos = ()
 
 attacked = []
 
@@ -65,6 +68,9 @@ class Piece:
     white: int = 8
     black: int = 16
 
+
+colourMask = 0b11000
+pieceMask = 0b00111
 
 # 8 = white
 # 16 = black

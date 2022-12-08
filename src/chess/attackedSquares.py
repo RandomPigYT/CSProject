@@ -1,69 +1,61 @@
 from chess import globals as g
 from chess import generateMoves as gm
+from chess import util as u
 
 
-def getCriticalLine(pos, colour):
+def getCriticalLines(kingPos, colour) -> list:
     # N, S, E, W, NE, NW, SE, SW
     directions = [8, -8, 1, -1, 9, 7, -7, -9]
 
-    # Movement offset for pieces
-    def getPieceOffset(pieceValue):  # {
+    def lineAttacked(piece, dirIndex) -> bool:  # {
+        if dirIndex < 4:
+            if piece >= g.Piece.Rook:
+                return True
 
-        piece = pieceValue & 0b00111
-
-        if piece == g.Piece.Rook:
-            return (0, 4)
-        elif piece == g.Piece.Bishop:
-            return (4, 4)
         else:
-            return (0, 8)
-        
-    # }
+            if piece == g.Piece.Bishop or piece == g.Piece.Queen:
+                return True
 
-    def getPiecePossibleDirs(offset, directions) -> list:  # {
-        i = offset[0]
-
-        possible = []
-
-        while i < (offset[0] + offset[1]):
-            possible.append(directions[i])
-
-            i += 1;
-
-        return possible
+        return False
 
     # }
-    
+
     criticalLines = []
 
     for i in range(len(directions)):
-        temp = pos
         numBarriers = 0
-        line = []
         isCritical = False
 
+        line = []
 
-        for j in range(g.distToEdge[pos][i]):
-
-
+        temp = kingPos
+        for j in range(g.distToEdge[kingPos][i]):
             temp += directions[i]
 
-            if g.board[temp] != 0 and g.board[temp] & 0b11000 == colour:
-                numBarriers += 1
+            line.append(temp)
 
-            if g.board[temp] != 0 and g.board[temp] & 0b11000 != colour:
-
-                # Check if the piece is attacking the current line
+            if g.board[temp]:
+                
+                # If the enemy piece is attacking a line defended by only one
+                # piece, the line is critical
                 if (
-                    directions[i]
-                    in getPiecePossibleDirs(getPieceOffset(g.board[temp]), directions)
+                    lineAttacked(g.board[temp] & g.pieceMask, i)
                     and numBarriers == 1
+                    and g.board[temp] & g.colourMask == colour ^ g.colourMask
                 ):
                     isCritical = True
 
-            line.append(temp)
-        criticalLines.append(line)
-    print(criticalLines)
+                elif g.board[temp] and g.board[temp] & g.colourMask == colour:
+                    numBarriers += 1
+
+            # Check if the currently held piece was defending the line
+            elif len(g.heldPiece) and g.heldPiece[1] == temp:
+                numBarriers += 1
+
+        if isCritical and len(line):
+            criticalLines.append(line)
+
+    return criticalLines
 
 
 def attackedSquares(colour) -> list:
