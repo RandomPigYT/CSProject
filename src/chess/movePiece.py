@@ -32,7 +32,7 @@ def releasePiece():
         if currentSqr != prevPos:
 
             # Switch turns
-            g.turn ^= 0b11000
+            g.turn ^= g.colourMask
 
             # Don't play sound if starting square is the same as the ending
             # square

@@ -20,7 +20,7 @@ def getPieceName(pieceVal):
         piece.Queen: "Queen",
     }
 
-    name = colour(pieceVal & 0b11000) + pieces[pieceVal & 0b00111] + ".png"
+    name = colour(pieceVal & g.colourMask) + pieces[pieceVal & g.pieceMask] + ".png"
 
     return name
 

@@ -51,7 +51,7 @@ def knight(pieceData: tuple) -> list:
 def pawnAttacks(pieceData: tuple) -> list:
 
     pos = pieceData[1]
-    colour = pieceData[0] & 0b11000
+    colour = pieceData[0] & g.colourMask
 
     possibleMoves = []
 
@@ -85,7 +85,7 @@ def pawnAttacks(pieceData: tuple) -> list:
 def pawns(pieceData: tuple) -> list:
 
     pos = pieceData[1]
-    colour = pieceData[0] & 0b11000
+    colour = pieceData[0] & g.colourMask
 
     possibleMoves = []
 
@@ -136,9 +136,9 @@ def pawns(pieceData: tuple) -> list:
 
 def sliding(pieceData: tuple) -> list:
 
-    piece = pieceData[0] & 0b00111
+    piece = pieceData[0] & g.pieceMask
     pos = pieceData[1]
-    colour = pieceData[0] & 0b11000
+    colour = pieceData[0] & g.colourMask
 
     offset = ()
 
@@ -166,11 +166,11 @@ def sliding(pieceData: tuple) -> list:
                 possibleMoves.append(temp)
 
             # Check if the current sqaure contains a piece of the same colour
-            elif g.board[temp] & 0b11000 != colour:
+            elif g.board[temp] & g.colourMask != colour:
                 possibleMoves.append(temp)
                 break
 
-            elif g.board[temp] & 0b11000 == colour:
+            elif g.board[temp] & g.colourMask == colour:
                 possibleMoves.append(temp - directions[i + offset[0]])
                 break
 
@@ -181,13 +181,13 @@ def generateMoves(pieceData: tuple) -> list:
 
     moves = list(range(len(g.board)))
 
-    if pieceData[0] & 0b00111 >= g.Piece.Bishop:
+    if pieceData[0] & g.pieceMask >= g.Piece.Bishop:
         moves = sliding(pieceData)
 
-    elif pieceData[0] & 0b00111 == g.Piece.Pawn:
+    elif pieceData[0] & g.pieceMask == g.Piece.Pawn:
         moves = pawns(pieceData)
 
-    elif pieceData[0] & 0b00111 == g.Piece.Knight:
+    elif pieceData[0] & g.pieceMask == g.Piece.Knight:
         moves = knight(pieceData)
 
     return moves

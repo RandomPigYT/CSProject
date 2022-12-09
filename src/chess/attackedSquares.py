@@ -72,10 +72,10 @@ def attackedSquares(colour) -> list:
         pieces = g.blackPieceLocations
 
     for i in pieces:
-        if g.board[i] & 0b00111 == g.Piece.Pawn:
+        if g.board[i] & g.pieceMask == g.Piece.Pawn:
             g.attacked.extend(gm.pawnAttacks((g.board[i], i)))
             continue
 
-        elif g.board[i] & 0b00111 != g.Piece.King:
+        elif g.board[i] & g.pieceMask != g.Piece.King:
 
             g.attacked.extend(gm.generateMoves((g.board[i], i)))

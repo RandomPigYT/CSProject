@@ -12,7 +12,7 @@ def pieceLocations():
 
         # Check if the square has a piece
         if square:
-            if square & 0b11000 == g.Piece.white:
+            if square & g.colourMask == g.Piece.white:
                 g.whitePieceLocations.append(i)
 
             else:
