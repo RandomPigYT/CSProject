@@ -2,6 +2,7 @@ from chess import globals as g
 from chess import generateMoves as gm
 from chess import pieceLocations as pl
 from chess import attackedSquares as a
+from chess import util as u
 
 
 def makeMove(startSquare, endSquare) -> bool:
@@ -29,6 +30,17 @@ def makeMove(startSquare, endSquare) -> bool:
         return False
 
     else:
+
+        
+        criticalLines = a.getCriticalLines(u.findKing(g.turn), g.turn)
+
+        for i in criticalLines:
+            if startSquare in i and endSquare not in i:
+                g.board[g.heldPiece[1]] = g.heldPiece[0]
+                g.heldPiece = ()
+
+                return False
+
 
         g.board[endSquare] = g.heldPiece[0]
         g.heldPiece = ()

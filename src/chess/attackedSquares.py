@@ -13,7 +13,7 @@ def getCriticalLines(kingPos, colour) -> list:
                 return True
 
         elif piece == g.Piece.Bishop or piece == g.Piece.Queen:
-                return True
+            return True
 
         return False
 
@@ -35,7 +35,11 @@ def getCriticalLines(kingPos, colour) -> list:
 
             if g.board[temp]:
 
-                if g.board[temp] & g.colourMask != colour and not lineAttacked(g.board[temp] & g.pieceMask, i) and not isCritical:
+                if (
+                    g.board[temp] & g.colourMask != colour
+                    and not lineAttacked(g.board[temp] & g.pieceMask, i)
+                    and not isCritical
+                ):
                     break
 
                 # If the enemy piece is attacking a line defended by only one
