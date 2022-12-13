@@ -46,7 +46,7 @@ def chess():
         for i in a.getCriticalLines(4, g.Piece.white):
             for j in i:
                 pygame.draw.circle(
-                    pgWindow.screen, (255, 0, 0), g.squareCentres[j], g.side / 2
+                    pgWindow.screen, (255, 0, 0), g.squareCentres[j], g.side / 3
                 )
 
         draw.drawPieces(pgWindow)

@@ -16,3 +16,5 @@ def findKing(colour):
             and g.board[i] & g.colourMask == colour
         ):
             return i
+
+    return g.heldPiece[1]
