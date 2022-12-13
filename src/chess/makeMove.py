@@ -35,5 +35,6 @@ def makeMove(startSquare, endSquare) -> bool:
 
         # Keep track of pieces
         pl.pieceLocations()
+        a.attackedSquares(g.turn)
 
         return True

@@ -27,7 +27,7 @@ distToEdge: list = []
 
 squareCentres: list = 64 * [0]
 
-# (<value>, <prevPos>)
+# (<value>, <Pos>)
 heldPiece = ()
 
 takenBlack: list = []

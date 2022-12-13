@@ -76,6 +76,5 @@ def attackedSquares(colour) -> list:
             g.attacked.extend(gm.pawnAttacks((g.board[i], i)))
             continue
 
-        elif g.board[i] & g.pieceMask != g.Piece.King:
-
+        else:
             g.attacked.extend(gm.generateMoves((g.board[i], i)))

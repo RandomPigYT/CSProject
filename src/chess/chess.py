@@ -37,7 +37,6 @@ def chess():
 
             if event.type == pygame.MOUSEBUTTONUP:
                 mp.releasePiece()
-                a.attackedSquares(g.Piece.black)
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mp.holdPiece()

@@ -4,6 +4,19 @@ from chess import util as u
 # N, S, E, W, NE, NW, SE, SW
 directions = [8, -8, 1, -1, 9, 7, -7, -9]
 
+def king(pieceData: tuple) -> list:
+    pos = pieceData[1]
+
+    moves = []
+    
+    for i in range(len(directions)):
+        if g.distToEdge[pos][i] >= 1:
+            if pos + directions[i] not in g.attacked:
+                moves.append(pos + directions[i]);
+    return moves
+        
+
+
 
 def knight(pieceData: tuple) -> list:
 
@@ -166,13 +179,13 @@ def sliding(pieceData: tuple) -> list:
                 possibleMoves.append(temp)
 
             # Check if the current sqaure contains a piece of the same colour
-            elif g.board[temp] & g.colourMask != colour:
+            else: 
                 possibleMoves.append(temp)
                 break
 
-            elif g.board[temp] & g.colourMask == colour:
-                possibleMoves.append(temp - directions[i + offset[0]])
-                break
+           #elif g.board[temp] & g.colourMask == colour:
+           #    possibleMoves.append(temp - directions[i + offset[0]])
+           #    break
 
     return possibleMoves
 
@@ -189,5 +202,8 @@ def generateMoves(pieceData: tuple) -> list:
 
     elif pieceData[0] & g.pieceMask == g.Piece.Knight:
         moves = knight(pieceData)
+
+    elif pieceData[0] & g.pieceMask == g.Piece.King:
+        moves = king(pieceData)
 
     return moves
