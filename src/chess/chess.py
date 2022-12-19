@@ -6,6 +6,9 @@ from chess import movePiece as mp
 from chess import attackedSquares as a
 from chess import globals as g
 from sprites import sprites as s
+from chess import check as ch
+from chess import util as u
+from chess import findSquare as fs
 import os
 
 
@@ -37,11 +40,16 @@ def chess():
 
             if event.type == pygame.MOUSEBUTTONUP:
                 mp.releasePiece()
+                print(fs.findSquare())
+
 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mp.holdPiece()
 
         draw.drawBoard(pgWindow)
+
+        if ch.isCheck():
+            pygame.draw.circle(pgWindow.screen, (255, 0, 0), g.squareCentres[u.findKing(g.turn)], g.side / 2)
 
         for i in a.getCriticalLines(4, g.Piece.white):
             for j in i:

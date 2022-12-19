@@ -48,11 +48,28 @@ attacked = []
 # 2 = n white
 check: int = 0
 
-# k = black king side
-# q = black queen side
-# K = white king side
-# Q = white queen side
-canCastle: str = 0
+
+# First bit: white king side
+# Second bit: white queen side
+# Third bit: black king side
+# Fourth bit: black queen side
+#
+# This does not guarantee that castling is possible as the path could be blocked
+# by other pieces, or the king could be in check, and etc.
+#
+# a bit describing the ability to castle to a particular side equals zero if
+# the rook on the corresponging side has moved or has been captured. 
+#
+# If the king is moved, all the bits will become zero
+canCastle: int = 0b1111
+
+
+class Castle:
+    whiteOffset = 2
+    blackOffset = 0
+
+    kingSideOffset = 1
+    queenSideOffset = 0
 
 
 class Piece:
