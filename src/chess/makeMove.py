@@ -78,9 +78,23 @@ def makeMove(startSquare, endSquare) -> bool:
 
             return False
 
-
         if g.heldPiece[0] & g.pieceMask == g.Piece.King:
             disableCastling()
+
+        if g.heldPiece[0] & g.pieceMask == g.Piece.Rook:
+            g.canCastle &= ~(
+                (0b1 << castling.Castle.colourOffset[g.turn])
+                << castling.Castle.sideOffset[castling.side(startSquare, g.turn)]
+            )
+            print(bin(g.canCastle))
+
+        if endSquare in castling.rookPos[g.turn ^ 0b11000]:
+            g.canCastle &= ~(
+                (0b1 << castling.Castle.colourOffset[g.turn ^ 0b11000])
+                << castling.Castle.sideOffset[castling.side(endSquare, g.turn ^ 0b11000)]
+            )
+            print(bin(g.canCastle))
+
 
         g.board[endSquare] = g.heldPiece[0]
         g.heldPiece = ()

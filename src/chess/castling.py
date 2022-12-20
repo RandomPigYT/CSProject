@@ -34,7 +34,7 @@ class Castle:
     sideOffset = [1, 0]
 
 
-def side(endPos, colour, castleSquares):
+def side(endPos, colour):
     for i in range(len(castleSquares[colour])):
         if endPos in castleSquares[colour][i]:
             return i
@@ -44,7 +44,7 @@ def side(endPos, colour, castleSquares):
 
 def castle(endPos, colour):
 
-    castleSide = side(endPos, colour, castleSquares)
+    castleSide = side(endPos, colour)
 
     g.board[endPos] = 0
 
@@ -62,7 +62,7 @@ def castle(endPos, colour):
 
 def canCastle(endPos, colour):
 
-    castleSide = side(endPos, colour, castleSquares)
+    castleSide = side(endPos, colour)
 
     if (
         not g.canCastle
@@ -87,6 +87,10 @@ def canCastle(endPos, colour):
 def isCastling(endPos, colour) -> bool:
     for i in castleSquares[colour]:
         if endPos in i:
-            return True and g.heldPiece[0] & g.pieceMask == g.Piece.King and canCastle(endPos, colour)
+            return (
+                True
+                and g.heldPiece[0] & g.pieceMask == g.Piece.King
+                and canCastle(endPos, colour)
+            )
 
     return False
