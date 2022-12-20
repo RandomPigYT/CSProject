@@ -5,7 +5,7 @@ from chess import globals as g
 import pygame
 
 
-def initBoard(window: w.PygameWindow):
+def initBoard(window: w.PygameWindow, FEN):
 
     g.board = 64 * [0]
     g.heldPiece = ()
@@ -17,9 +17,10 @@ def initBoard(window: w.PygameWindow):
     g.check = 0
     g.check = ""
     g.turn = g.Piece.white
+    g.canCastle = 0b1111
 
     pygame.mixer.init()
 
-    pp.placePieces("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR")
+    pp.placePieces(FEN)
 
     de.distToEdge()

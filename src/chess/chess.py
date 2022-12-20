@@ -23,7 +23,7 @@ def chess():
 
     running = True
 
-    init.initBoard(pgWindow)
+    init.initBoard(pgWindow, "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR")
 
     icon = pygame.image.load(os.getcwd() + "/assets/chessButton.png")
 
@@ -42,14 +42,18 @@ def chess():
                 mp.releasePiece()
                 print(fs.findSquare())
 
-
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mp.holdPiece()
 
         draw.drawBoard(pgWindow)
 
         if ch.isCheck():
-            pygame.draw.circle(pgWindow.screen, (255, 0, 0), g.squareCentres[u.findKing(g.turn)], g.side / 2)
+            pygame.draw.circle(
+                pgWindow.screen,
+                (255, 0, 0),
+                g.squareCentres[u.findKing(g.turn)],
+                g.side / 2,
+            )
 
         for i in a.getCriticalLines(4, g.Piece.white):
             for j in i:
