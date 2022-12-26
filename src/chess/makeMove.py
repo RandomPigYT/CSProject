@@ -50,7 +50,7 @@ def makeMove(startSquare, endSquare) -> bool:
         return False
 
     else:
-    
+
         criticalLines = a.getCriticalLines(u.findKing(g.turn), g.turn)
 
         for i in criticalLines:
@@ -81,7 +81,7 @@ def makeMove(startSquare, endSquare) -> bool:
 
         if g.heldPiece[0] & g.pieceMask == g.Piece.King:
             disableCastling()
-            
+
         # Disable castling
         if g.heldPiece[0] & g.pieceMask == g.Piece.Rook:
             g.canCastle &= ~(
@@ -93,13 +93,14 @@ def makeMove(startSquare, endSquare) -> bool:
         if endSquare in castling.rookPos[g.turn ^ g.colourMask]:
             g.canCastle &= ~(
                 (0b1 << castling.Castle.colourOffset[g.turn ^ g.colourMask])
-                << castling.Castle.sideOffset[castling.side(endSquare, g.turn ^ 0b11000)]
+                << castling.Castle.sideOffset[
+                    castling.side(endSquare, g.turn ^ 0b11000)
+                ]
             )
             print(bin(g.canCastle))
 
-
         boardCopy = check.makeTempMove(startSquare, endSquare)
-        print("okay,",boardCopy == g.board)
+        print("okay,", boardCopy == g.board)
 
         if check.isCheck():
             print("illegal")
@@ -110,7 +111,6 @@ def makeMove(startSquare, endSquare) -> bool:
             g.heldPiece = ()
 
             return False
-
 
         g.board[endSquare] = g.heldPiece[0]
         g.heldPiece = ()

@@ -17,5 +17,5 @@ def findKing(colour):
         ):
             return i
 
-    #print(g.heldPiece)
+    # print(g.heldPiece)
     return g.heldPiece[1]

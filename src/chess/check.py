@@ -16,7 +16,7 @@ def isCheck() -> bool:
 
 def makeTempMove(startSquare, endSquare):
     boardCopy = g.board.copy()
-    
+
     if len(g.heldPiece) and g.heldPiece[1] == startSquare:
         piece = g.heldPiece[0]
 
@@ -26,8 +26,9 @@ def makeTempMove(startSquare, endSquare):
     if not piece & g.colourMask == g.board[endSquare] & g.colourMask:
         g.board[startSquare] = 0
         g.board[endSquare] = piece
-    
+
     return boardCopy
+
 
 def unmakeMove(boardCopy: list):
     g.board = boardCopy.copy()
@@ -38,7 +39,7 @@ def checkmate(colour):
 
         if g.board[i] and g.board[i] & g.colourMask == colour:
             moves = gm.generateMoves((g.board[i], i))
-            
+
             legalMoves = []
 
             for j in moves:
@@ -48,7 +49,7 @@ def checkmate(colour):
                     legalMoves.append(j)
 
                 unmakeMove(boardCopy)
-                
+
             if len(legalMoves):
                 return False
     return True
