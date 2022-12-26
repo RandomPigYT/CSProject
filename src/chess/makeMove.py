@@ -4,6 +4,7 @@ from chess import pieceLocations as pl
 from chess import attackedSquares as a
 from chess import util as u
 from chess import castling
+from chess import check
 
 
 def disableCastling():
@@ -49,7 +50,7 @@ def makeMove(startSquare, endSquare) -> bool:
         return False
 
     else:
-
+    
         criticalLines = a.getCriticalLines(u.findKing(g.turn), g.turn)
 
         for i in criticalLines:
@@ -80,7 +81,8 @@ def makeMove(startSquare, endSquare) -> bool:
 
         if g.heldPiece[0] & g.pieceMask == g.Piece.King:
             disableCastling()
-
+            
+        # Disable castling
         if g.heldPiece[0] & g.pieceMask == g.Piece.Rook:
             g.canCastle &= ~(
                 (0b1 << castling.Castle.colourOffset[g.turn])
@@ -88,12 +90,26 @@ def makeMove(startSquare, endSquare) -> bool:
             )
             print(bin(g.canCastle))
 
-        if endSquare in castling.rookPos[g.turn ^ 0b11000]:
+        if endSquare in castling.rookPos[g.turn ^ g.colourMask]:
             g.canCastle &= ~(
-                (0b1 << castling.Castle.colourOffset[g.turn ^ 0b11000])
+                (0b1 << castling.Castle.colourOffset[g.turn ^ g.colourMask])
                 << castling.Castle.sideOffset[castling.side(endSquare, g.turn ^ 0b11000)]
             )
             print(bin(g.canCastle))
+
+
+        boardCopy = check.makeTempMove(startSquare, endSquare)
+        print("okay,",boardCopy == g.board)
+
+        if check.isCheck():
+            print("illegal")
+
+            check.unmakeMove(boardCopy)
+
+            g.board[g.heldPiece[1]] = g.heldPiece[0]
+            g.heldPiece = ()
+
+            return False
 
 
         g.board[endSquare] = g.heldPiece[0]

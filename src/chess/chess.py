@@ -38,22 +38,16 @@ def chess():
             if event.type == pygame.QUIT:
                 running = False
 
-            if event.type == pygame.MOUSEBUTTONUP:
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 mp.releasePiece()
                 #print(fs.findSquare())
+                print(ch.checkmate(g.turn))
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 mp.holdPiece()
 
         draw.drawBoard(pgWindow)
-
-        if ch.isCheck():
-            pygame.draw.circle(
-                pgWindow.screen,
-                (255, 0, 0),
-                g.squareCentres[u.findKing(g.turn)],
-                g.side / 2,
-            )
 
        #for i in a.getCriticalLines(4, g.Piece.white):
        #    for j in i:
