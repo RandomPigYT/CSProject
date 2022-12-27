@@ -5,6 +5,7 @@ from chess import attackedSquares as a
 from chess import util as u
 from chess import castling
 from chess import check
+from chess import promote as pr
 
 
 def disableCastling():
@@ -114,6 +115,21 @@ def makeMove(startSquare, endSquare) -> bool:
 
         g.board[endSquare] = g.heldPiece[0]
         g.heldPiece = ()
+
+        # Check if a pawn needs to promote
+
+        inFinalRank = (
+            lambda colour, pos: True
+            if (colour == g.Piece.white and u.indexToCoords(pos)[1] == 7)
+            or (colour == g.Piece.black and u.indexToCoords(pos)[1] == 0)
+            else False
+        )
+        
+        
+        if g.board[endSquare] & g.pieceMask == g.Piece.Pawn and inFinalRank(g.board[endSquare] & g.colourMask, endSquare):
+            pr.promotePawn(endSquare)
+
+
 
         # Keep track of pieces
         pl.pieceLocations()

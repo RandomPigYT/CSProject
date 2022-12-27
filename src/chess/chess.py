@@ -40,8 +40,9 @@ def chess():
 
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
                 mp.releasePiece()
-                # print(fs.findSquare())
-                print(ch.checkmate(g.turn))
+
+                if ch.checkmate(g.turn):
+                    print("Checkmate!")
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 mp.holdPiece()
