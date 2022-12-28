@@ -9,6 +9,7 @@ from sprites import sprites as s
 from chess import check as ch
 from chess import util as u
 from chess import findSquare as fs
+from chess import winner 
 import os
 
 
@@ -42,7 +43,14 @@ def chess():
                 mp.releasePiece()
 
                 if ch.checkmate(g.turn):
-                    print("Checkmate!")
+                    winner.winner(g.turn ^ g.colourMask, pgWindow.screen)
+                    
+                    # cleanup
+                    pygame.quit()
+                    del g.sSheet
+                    del pgWindow
+                    return
+                    
 
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
                 mp.holdPiece()
