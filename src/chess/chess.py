@@ -43,7 +43,7 @@ def chess():
                 mp.releasePiece()
 
                 if ch.checkmate(g.turn):
-                    winner.winner(g.turn ^ g.colourMask, pgWindow.screen)
+                    winner.winner(g.turn ^ g.colourMask, pgWindow)
                     
                     # cleanup
                     pygame.quit()
