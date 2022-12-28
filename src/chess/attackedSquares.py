@@ -1,6 +1,7 @@
 from chess import globals as g
 from chess import generateMoves as gm
 from chess import util as u
+from chess import pieceLocations as pl
 
 
 def getCriticalLines(kingPos, colour) -> list:
@@ -65,6 +66,9 @@ def getCriticalLines(kingPos, colour) -> list:
 
 
 def attackedSquares(colour) -> list:
+    
+    pl.pieceLocations()
+
     pieces = []
 
     g.attacked = []
