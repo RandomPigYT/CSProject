@@ -1,5 +1,5 @@
 run:
-	@python src/app/main.py
+	@python src/app/UI.py
 
 frmt:
 	@python -m black $(shell find . -type f -name "*.py")
