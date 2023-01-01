@@ -89,7 +89,6 @@ def makeMove(startSquare, endSquare) -> bool:
                 (0b1 << castling.Castle.colourOffset[g.turn])
                 << castling.Castle.sideOffset[castling.side(startSquare, g.turn)]
             )
-            print(bin(g.canCastle))
 
         if endSquare in castling.rookPos[g.turn ^ g.colourMask]:
             g.canCastle &= ~(
@@ -98,13 +97,10 @@ def makeMove(startSquare, endSquare) -> bool:
                     castling.side(endSquare, g.turn ^ 0b11000)
                 ]
             )
-            print(bin(g.canCastle))
 
         boardCopy = check.makeTempMove(startSquare, endSquare)
-        print("okay,", boardCopy == g.board)
 
         if check.isCheck():
-            print("illegal")
 
             check.unmakeMove(boardCopy)
 
