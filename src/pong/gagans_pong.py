@@ -37,23 +37,19 @@ def ball_restart():
     ball_speed_y *=random.choice((1,-1))
     ball_speed_x *=random.choice((1,-1))
     
-     
-#general set-up
-pygame.init()
-clock=pygame.time.Clock()
+clock=None
 
 #setting up the main window
-screen_width=1280
-screen_height=960
-screen=pygame.display.set_mode((screen_width,screen_height))
-pygame.display.set_caption('Pong')
+screen_width=None
+screen_height=None
+screen=None
 
 #game rectangles(defining rectangles)
-ball=pygame.Rect(screen_width/2-15,screen_height/2- 15,30,30)#15 is subtracted so that ball is at centre
-player=pygame.Rect(screen_width-20,screen_height/2- 70,10,140)
-opponent=pygame.Rect(10,screen_height/2-70, 10,140)
+ball=None
+player=None
+opponent=None
 
-bg_color=pygame.Color('grey12')
+bg_color=None
 light_grey=(200,200,200)
 
 ball_speed_x=7*random.choice((1,-1))
@@ -63,7 +59,26 @@ opponent_speed=7
 
 def pong():
     
-    global clock, screen, ball, player, opponent, bg_color, light_grey, ball_speed_x, ball_speed_y, player_speed, opponent_speed
+    global screen ,screen_width, screen_height, clock, screen, ball, player, opponent, bg_color, light_grey, ball_speed_x, ball_speed_y, player_speed, opponent_speed
+    
+    #general set-up
+    pygame.init()
+
+    screen_width=pygame.display.Info().current_w
+    screen_height=pygame.display.Info().current_h
+    screen=None
+
+    clock = pygame.time.Clock()
+
+    screen = pygame.display.set_mode((screen_width,screen_height))
+    pygame.display.set_caption('Pong')
+
+    #game rectangles(defining rectangles)
+    ball=pygame.Rect(screen_width/2-15,screen_height/2- 15,30,30)#15 is subtracted so that ball is at centre
+    player=pygame.Rect(screen_width-20,screen_height/2- 70,10,140)
+    opponent=pygame.Rect(10,screen_height/2-70, 10,140)
+
+    bg_color=pygame.Color('grey12')
 
 
     while True:

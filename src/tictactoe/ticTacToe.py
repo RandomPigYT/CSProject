@@ -158,7 +158,8 @@ def tictactoe():
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                exit()
+                pygame.quit()
+                return
 
             if event.type == pygame.MOUSEBUTTONDOWN and not game_over:
 

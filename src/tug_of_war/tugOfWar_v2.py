@@ -98,7 +98,7 @@ def input(event):
 
     if event.type == pygame.QUIT:
         pygame.quit()
-        exit()
+        return
 
     if event.type == pygame.KEYDOWN:  # checks if button is pressed
 

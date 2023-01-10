@@ -25,13 +25,15 @@ root.config(bg = "#000000")
 # setting GUI geometry
 root.geometry("1080x1080")
 
+root.state('normal')
+
 
 
 def chessg():
     chess.chess()
 
 def c4g():
-    connect4.C4()
+    connect4.connectfour()
 
 def pongg():
     gagans_pong.pong()

@@ -101,7 +101,7 @@ def snek():
         pygame.quit()
         
         # quit the program
-        quit()
+        return
 
 
     # Main Function
@@ -119,6 +119,9 @@ def snek():
                     change_to = 'LEFT'
                 if event.key == pygame.K_d:
                     change_to = 'RIGHT'
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                return
 
         # If two keys pressed simultaneously
         # we don't want snake to move into two
