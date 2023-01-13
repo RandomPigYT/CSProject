@@ -94,8 +94,7 @@ def pawnAttacks(pieceData: tuple) -> list:
     return possibleMoves
 
 
-def pawns(pieceData: tuple) -> list:
-
+def pawnPushes(pieceData: tuple):
     pos = pieceData[1]
     colour = pieceData[0] & g.colourMask
 
@@ -133,9 +132,20 @@ def pawns(pieceData: tuple) -> list:
     ):
         possibleMoves.append(pos + (colourMod(colour) * directions[0]))
 
-    # TODO: check for en passant
+    return possibleMoves
 
-    # check captures
+
+def pawns(pieceData: tuple) -> list:
+
+    pos = pieceData[1]
+    colour = pieceData[0] & g.colourMask
+
+    possibleMoves = []
+
+    # Pawn pushes
+    possibleMoves.extend(pawnPushes(pieceData))
+
+    # Pawn captures
     attacks = pawnAttacks(pieceData)
 
     for i in attacks:

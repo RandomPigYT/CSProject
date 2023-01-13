@@ -2,14 +2,15 @@ from chess import globals as g
 from chess import draw
 import pygame
 
+
 def promoteTo(pos, key):
-    
+
     colour = g.board[pos] & g.colourMask
 
     if key == pygame.K_q:
         g.board[pos] = g.Piece.Queen | colour
         return True
-    
+
     if key == pygame.K_n:
         g.board[pos] = g.Piece.Knight | colour
         return True
@@ -25,7 +26,7 @@ def promoteTo(pos, key):
 
 
 def promotePawn(pos):
-    
+
     while True:
 
         for event in pygame.event.get():

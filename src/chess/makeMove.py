@@ -120,12 +120,11 @@ def makeMove(startSquare, endSquare) -> bool:
             or (colour == g.Piece.black and u.indexToCoords(pos)[1] == 0)
             else False
         )
-        
-        
-        if g.board[endSquare] & g.pieceMask == g.Piece.Pawn and inFinalRank(g.board[endSquare] & g.colourMask, endSquare):
+
+        if g.board[endSquare] & g.pieceMask == g.Piece.Pawn and inFinalRank(
+            g.board[endSquare] & g.colourMask, endSquare
+        ):
             pr.promotePawn(endSquare)
-
-
 
         # Keep track of pieces
         pl.pieceLocations()

@@ -66,7 +66,7 @@ def getCriticalLines(kingPos, colour) -> list:
 
 
 def attackedSquares(colour) -> list:
-    
+
     pl.pieceLocations()
 
     pieces = []
