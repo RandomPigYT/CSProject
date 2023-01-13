@@ -136,12 +136,11 @@ def pawns(pieceData: tuple) -> list:
     # TODO: check for en passant
 
     # check captures
-    if not inFinalRank(colour, pos):
-        if g.board[pos + (colourMod(colour) * directions[4])] != 0:
-            possibleMoves.append(pos + (colourMod(colour) * directions[4]))
+    attacks = pawnAttacks(pieceData)
 
-        if g.board[pos + (colourMod(colour) * directions[5])] != 0:
-            possibleMoves.append(pos + (colourMod(colour) * directions[5]))
+    for i in attacks:
+        if g.board[i]:
+            possibleMoves.append(i)
 
     return possibleMoves
 
